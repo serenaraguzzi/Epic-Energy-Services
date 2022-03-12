@@ -15,7 +15,8 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long>{
 	public Page<Cliente> findAllByOrderByDataInserimento(Pageable pageable);
 	public Page<Cliente> findAllByOrderByDataUltimoContatto(Pageable pageable);
 	public Page<Cliente> findAllByOrderByRagioneSocialeAsc(Pageable pageable);
-	
+	public Page<Cliente> findAllByOrderBySedeLegaleComuneProvincia(Pageable pageable);
+
 	
 	
 	

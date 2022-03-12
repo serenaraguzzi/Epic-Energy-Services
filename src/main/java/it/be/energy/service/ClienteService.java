@@ -84,10 +84,11 @@ public Page<Cliente> findAllByOrderByDataUltimoContatto(Pageable pageable){
 	return clienteRepository.findAllByOrderByDataUltimoContatto(pageable);
 }
 
+public Page<Cliente> findAllByOrderBySedeLegaleComuneProvincia(Pageable pageable){
+	return clienteRepository.findAllByOrderBySedeLegaleComuneProvincia(pageable);
 
 
-
-
+}
 
 
 
