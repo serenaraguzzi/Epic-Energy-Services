@@ -21,7 +21,7 @@ public class Indirizzo {
 	private Long id;
 	private String via;
 	private String civico;
-	private Integer cap;
+	private String cap;
 	private String localita;
 	@ManyToOne
 	private Comune comune;
