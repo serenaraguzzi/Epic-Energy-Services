@@ -15,8 +15,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 public class Indirizzo {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String via;
 	private String civico;
@@ -24,6 +25,5 @@ public class Indirizzo {
 	private String localita;
 	@ManyToOne
 	private Comune comune;
-	
-	
+
 }

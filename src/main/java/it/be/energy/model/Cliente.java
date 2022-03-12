@@ -40,19 +40,8 @@ public class Cliente {
 	private Indirizzo sedeLegale;
 	@OneToOne
 	private Indirizzo sedeOperativa;
-	
 	private TipoCliente tipoCliente;
 	@OneToMany(mappedBy = "cliente")
 	List<Fattura> fatture;
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
