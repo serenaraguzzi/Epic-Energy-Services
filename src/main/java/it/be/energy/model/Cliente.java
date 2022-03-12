@@ -28,7 +28,7 @@ public class Cliente {
 	private String pIva;
 	private String email;
 	private LocalDate dataInserimento;
-	private LocalDate dataUtimoContatto;
+	private LocalDate dataUltimoContatto;
 	private BigDecimal fatturatoAnnuale;
 	private String pec;
 	private String telefono;
