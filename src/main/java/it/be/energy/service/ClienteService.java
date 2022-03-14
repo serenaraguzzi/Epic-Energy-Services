@@ -1,5 +1,8 @@
 package it.be.energy.service;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import it.be.energy.controller.ClienteException;
+import it.be.energy.exception.ClienteException;
 import it.be.energy.model.Cliente;
 import it.be.energy.repository.ClienteRepository;
 
@@ -87,15 +90,24 @@ public Page<Cliente> findAllByOrderByDataUltimoContatto(Pageable pageable){
 public Page<Cliente> findAllByOrderBySedeLegaleComuneProvincia(Pageable pageable){
 	return clienteRepository.findAllByOrderBySedeLegaleComuneProvincia(pageable);
 
-
 }
 
 
+public List<Cliente> findByDataInserimento(LocalDate dataInserimento){
+	return clienteRepository.findByDataInserimento(dataInserimento);
+	
+}
 
+public List<Cliente> findByDataUltimoContatto(LocalDate dataUltimoContatto) {
+	return clienteRepository.findByDataUltimoContatto(dataUltimoContatto);
+}
+public List<Cliente> findByFatturatoAnnuale(BigDecimal fatturatoMin, BigDecimal fatturatoMax) {
+	return clienteRepository.findByFatturatoAnnuale(fatturatoMin, fatturatoMax);
+}
 
-
-
-
+public List<Cliente> findByRagioneSocialeContaining(String fisso) {
+	return clienteRepository.findByRagioneSocialeContaining(fisso);
+}
 
 
 
