@@ -3,6 +3,8 @@ package it.be.energy.repository;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,6 +16,8 @@ import it.be.energy.model.Cliente;
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
 	public Page<Cliente> findAll(Pageable pageable);
+	
+	
 
 	public Page<Cliente> findAllByOrderByFatturatoAnnuale(Pageable pageable);
 
@@ -21,7 +25,7 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
 	public Page<Cliente> findAllByOrderByDataUltimoContatto(Pageable pageable);
 
-	public Page<Cliente> findAllByOrderByRagioneSocialeAsc(Pageable pageable);
+	public Page<Cliente> findAllByOrderByRagioneSociale(Pageable pageable);
 
 	public Page<Cliente> findAllByOrderBySedeLegaleComuneProvincia(Pageable pageable);
 	

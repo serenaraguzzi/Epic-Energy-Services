@@ -60,19 +60,23 @@ public class ClienteService {
 	}
 
 	
-	public Cliente trovaClienteById(Long id) throws ClienteException {
+	
+	
+	public Optional<Cliente> trovaClienteById(Long id) throws ClienteException {
 		Optional<Cliente> clienteTrovato = clienteRepository.findById(id);
 		if (clienteTrovato.isPresent()) {
-			return clienteTrovato.get();
+			return clienteTrovato;
 	} else {
 		throw new ClienteException("Cliente non trovato");
 	}
 
 	}
 	
+	
+	
 
-public Page<Cliente> findAllByOrderByRagioneSocialeAsc(Pageable pageable){
-	return clienteRepository.findAllByOrderByRagioneSocialeAsc(pageable);
+public Page<Cliente> findAllByOrderByRagioneSociale(Pageable pageable){
+	return clienteRepository.findAllByOrderByRagioneSociale(pageable);
 }
 
 public Page<Cliente> findAllByOrderByFatturatoAnnuale(Pageable pageable){
