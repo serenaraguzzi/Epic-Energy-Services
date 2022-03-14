@@ -7,7 +7,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import it.be.energy.exception.FatturaException;
 import it.be.energy.exception.IndirizzoException;
 import it.be.energy.model.Indirizzo;
 import it.be.energy.repository.IndirizzoRepository;
@@ -28,7 +27,7 @@ public class IndirizzoService {
 		if (indirizzoTrovato.isPresent()) {
 			return indirizzoTrovato;
 	} else {
-		throw new IndirizzoException("Indirizzo non trovato");
+		throw new IndirizzoException("Indirizzo non trovato!");
 	}
 
 	}

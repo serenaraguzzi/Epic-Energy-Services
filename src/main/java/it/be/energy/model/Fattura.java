@@ -21,7 +21,8 @@ public class Fattura {
 
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private Long numeroFattura;
+	private Long id;
+	private Integer numeroFattura;
 	private Integer anno;
 	private Date data;
 	private BigDecimal importo;

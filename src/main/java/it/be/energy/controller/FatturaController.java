@@ -1,5 +1,7 @@
 package it.be.energy.controller;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +22,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
-import it.be.energy.exception.ClienteException;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.be.energy.exception.FatturaException;
-import it.be.energy.model.Cliente;
 import it.be.energy.model.Fattura;
+import it.be.energy.model.StatoFattura;
 import it.be.energy.service.FatturaService;
-import lombok.extern.slf4j.Slf4j;
 
+
+@SecurityRequirement(name = "bearerAuth")
 @RestController
-@Slf4j
 @RequestMapping("/fattura")
 public class FatturaController {
 	
@@ -36,7 +38,7 @@ public class FatturaController {
 	@Autowired
 	FatturaService fatturaService;
 	
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
+	
 	@Operation(summary = "Trova tutte le fatture", description = "Trova tutte le fatture")
 	@GetMapping(value = "/trovatutte")
 	public ResponseEntity<Page<Fattura>> trovaTutte(Pageable pageable) {
@@ -49,9 +51,9 @@ public class FatturaController {
 	}
 
 
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
-	@Operation(summary = "Trova tutti i clienti con un id", description = "Trova tutti i clienti con un id")
-	@GetMapping(value = "/trovaclientebyid")
+	
+	@Operation(summary = "Trova una fattura con un id", description = "Trova una fattura con un id")
+	@GetMapping(value = "/trovafatturabyid")
 	public ResponseEntity<Fattura> trovaById(@PathVariable Long id) throws FatturaException {
 		Optional<Fattura> fatturaTrovata = fatturaService.trovaFatturaById(id);
 		if (fatturaTrovata.isPresent()) {
@@ -63,18 +65,17 @@ public class FatturaController {
 	}
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@Operation(summary = "Inserisci un cliente", description = "Inserire un cliente")
-	@PostMapping(value = "/inseriscicliente", produces = MediaType.APPLICATION_JSON_VALUE)
+	@Operation(summary = "Inserisci una fattura", description = "Inserire una fattura")
+	@PostMapping(value = "/inseriscifattura", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String addFattura(@RequestBody Fattura fattura) {
-	//	@log.info("*** INSERIMENTO CLIENTE IN CORSO ***");
 		fatturaService.inserisciFattura(fattura);
 		return "Fattura salvata!";
-	//	 @log.info("*** INSERIMENTO CLIENTE COMPLETATO ***");
+	
 
 	}
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@Operation(summary = "Aggiorna un cliente", description = "Aggiorna un cliente")
+	@Operation(summary = "Aggiorna una fattura", description = "Aggiorna una fattura")
 	@PutMapping(value = "/aggiornacliente", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String updateFattura(@RequestBody Fattura fattura, @PathVariable Long id) throws FatturaException {
 		fatturaService.modificaFattura(fattura, id);
@@ -82,7 +83,7 @@ public class FatturaController {
 	}
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@Operation(summary = "Cancella un cliente", description = "Cancella un cliente")
+	@Operation(summary = "Cancella una fattura", description = "Cancella una fattura")
 	@DeleteMapping("/cancellacliente")
 	public String deleteFattura(@RequestParam Long id) {
 		fatturaService.cancellaFatturaById(id);
@@ -94,6 +95,68 @@ public class FatturaController {
 	
 	
 	
+	
+	
+	
+    @GetMapping("/trovafattureperragionesociale")
+    @Operation(summary = "Trova una fattura per ragione sociale", description = "Trova una fattura per ragione sociale")
+    public ResponseEntity<Page<Fattura>> findByClienteRagioneSocialeLike(Pageable pageable, String nome) {
+        Page<Fattura> trovate = fatturaService.findByClienteRagioneSocialeLike(pageable, nome); 
+        if(trovate.hasContent()) {
+            return new ResponseEntity<>(trovate , HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(trovate , HttpStatus.NO_CONTENT);
+        }
+    }
+
+   
+    @GetMapping("/trovafattureperstatofattura")
+    @Operation(summary = "Trova una fattura per stato fattura", description = "Trova una fattura per stato fattura")
+    public ResponseEntity<Page<Fattura>> findByStatoFattura(Pageable pageable, StatoFattura stato) {
+        Page<Fattura> trovate = fatturaService.findByStatoFattura(pageable, stato); 
+        if(trovate.hasContent()) {
+            return new ResponseEntity<>(trovate , HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(trovate , HttpStatus.NO_CONTENT);
+        }
+
+    }
+    
+    @GetMapping("/trovafattureperdatafattura")
+    @Operation(summary = "Trova una fattura per data fattura", description = "Trova una fattura per data fattura")
+    public ResponseEntity<Page<Fattura>> findByDataFattura(Pageable pageable, Date data) {
+        Page<Fattura> trovate = fatturaService.findByDataFattura(pageable, data); 
+        if(trovate.hasContent()) {
+            return new ResponseEntity<>(trovate , HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(trovate , HttpStatus.NO_CONTENT);
+        }
+    }
+	
+      
+        @GetMapping("/trovafattureperannofattura")
+        @Operation(summary = "Trova una fattura per anno fattura", description = "Trova una fattura per anno fattura")
+        public ResponseEntity<Page<Fattura>> findByAnnoFattura(Pageable pageable, Integer anno) {
+            Page<Fattura> trovate = fatturaService.findByAnnoFattura(pageable, anno); 
+            if(trovate.hasContent()) {
+                return new ResponseEntity<>(trovate , HttpStatus.OK);
+            }else {
+                return new ResponseEntity<>(trovate , HttpStatus.NO_CONTENT);
+            }
+
+        }
+
+      
+        @GetMapping("/trovafattureperrangeimporto")
+        @Operation(summary = "Trova unafattura per range importo", description = "Trova unafattura per range importo")
+        public ResponseEntity<Page<Fattura>> findByImportoBetween(Pageable pageable, BigDecimal importoMin, BigDecimal importoMax) {
+            Page<Fattura> trovate = fatturaService.findByImportoBetween(pageable, importoMin, importoMax); 
+            if(trovate.hasContent()) {
+                return new ResponseEntity<>(trovate , HttpStatus.OK);
+            }else {
+                return new ResponseEntity<>(trovate , HttpStatus.NO_CONTENT);
+            }
+        }
 	
 	
 	

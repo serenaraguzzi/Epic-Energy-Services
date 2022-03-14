@@ -20,23 +20,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
-
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.be.energy.exception.IndirizzoException;
 import it.be.energy.model.Indirizzo;
 import it.be.energy.service.IndirizzoService;
-import lombok.extern.slf4j.Slf4j;
 
+
+@SecurityRequirement(name = "bearerAuth")
 @RestController
-@Slf4j
 @RequestMapping("/indirizzo")
 public class IndirizzoController {
 
 	@Autowired
 	IndirizzoService indirizzoService;
 	
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
-	@Operation(summary = "Trova tutte le fat", description = "Trova tutte le fatture")
-	@GetMapping(value = "/trovatutte")
+	
+	@Operation(summary = "Trova tutti gli indirizzi", description = "Trova tutti gli indirizzi")
+	@GetMapping(value = "/trovatutti")
 	public ResponseEntity<Page<Indirizzo>> trovaTutti(Pageable pageable) {
 		Page<Indirizzo> trovaTutti = indirizzoService.findAll(pageable);
 		if (trovaTutti.hasContent()) {
@@ -47,9 +47,9 @@ public class IndirizzoController {
 	}
 
 
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
-	@Operation(summary = "Trova tutti i clienti con un id", description = "Trova tutti i clienti con un id")
-	@GetMapping(value = "/trovaclientebyid")
+	
+	@Operation(summary = "Trova un indirizzo con un id", description = "Trova un indirizzo con un id")
+	@GetMapping(value = "/trovaindirizzobyid")
 	public ResponseEntity<Indirizzo> trovaById(@PathVariable Long id) throws IndirizzoException {
 		Optional<Indirizzo> indirizzoTrovato = indirizzoService.trovaIndirizzoById(id);
 		if (indirizzoTrovato.isPresent()) {
@@ -61,13 +61,12 @@ public class IndirizzoController {
 	}
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@Operation(summary = "Inserisci un cliente", description = "Inserire un cliente")
-	@PostMapping(value = "/inseriscicliente", produces = MediaType.APPLICATION_JSON_VALUE)
+	@Operation(summary = "Inserisci un indirizzo", description = "Inserire un indirizzo")
+	@PostMapping(value = "/inserisciindirizzo", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String addIndirizzo(@RequestBody Indirizzo indirizzo) {
-	//	@log.info("*** INSERIMENTO CLIENTE IN CORSO ***");
 		indirizzoService.inserisciIndirizzo(indirizzo);
 		return "Indirizzo salvato!";
-	//	 @log.info("*** INSERIMENTO CLIENTE COMPLETATO ***");
+	
 
 	}
 	
@@ -82,8 +81,8 @@ public class IndirizzoController {
 	
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@Operation(summary = "Cancella un cliente", description = "Cancella un cliente")
-	@DeleteMapping("/cancellacliente")
+	@Operation(summary = "Cancella un indirizzo", description = "Cancella un indirizzo")
+	@DeleteMapping("/cancellaindirizzo")
 	public String deleteIndirizzo(@RequestParam Long id) {
 		indirizzoService.cancellaIndirizzoById(id);
 		return "Indirizzo cancellato!";

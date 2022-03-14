@@ -1,5 +1,7 @@
 package it.be.energy.service;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,10 +9,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import it.be.energy.exception.ClienteException;
 import it.be.energy.exception.FatturaException;
-import it.be.energy.model.Cliente;
 import it.be.energy.model.Fattura;
+import it.be.energy.model.StatoFattura;
 import it.be.energy.repository.FatturaRepository;
 
 @Service
@@ -30,7 +31,7 @@ public class FatturaService {
 		if (fatturaTrovata.isPresent()) {
 			return fatturaTrovata;
 	} else {
-		throw new FatturaException("Fattura non trovato");
+		throw new FatturaException("Fattura non trovata!");
 	}
 
 	}
@@ -47,6 +48,7 @@ public class FatturaService {
 		Optional<Fattura> fatturaDaAggiornare = fatturaRepository.findById(id);
 		if (fatturaDaAggiornare.isPresent()) {
 			Fattura modifica = fatturaDaAggiornare.get();
+			modifica.setNumeroFattura(fattura.getNumeroFattura());
 			modifica.setAnno(fattura.getAnno());
 			modifica.setData(fattura.getData());
 			modifica.setImporto(fattura.getImporto());
@@ -59,5 +61,29 @@ public class FatturaService {
 		}
 	}
 
+	public Page<Fattura> findByClienteRagioneSocialeLike(Pageable pageable, String nome){
+        return fatturaRepository.findByClienteRagioneSocialeLike(pageable, nome);
+    }
+
+
 	
+    public Page<Fattura> findByStatoFattura(Pageable pageable, StatoFattura stato){
+        return fatturaRepository.findByStatoFattura(pageable, stato);
+    }
+
+    public Page<Fattura> findByDataFattura(Pageable pageable, Date data){
+        return fatturaRepository.findByData(pageable, data);
+    }
+
+    public Page<Fattura> findByAnnoFattura(Pageable pageable, Integer anno){
+        return fatturaRepository.findByAnno(pageable, anno);
+    }
+
+    public Page<Fattura> findByImportoBetween(Pageable pageable, BigDecimal importoMin, BigDecimal importoMax){
+        return fatturaRepository.findByImportoBetween(pageable, importoMin, importoMax);
+    }
+
+    
+    
+   
 }

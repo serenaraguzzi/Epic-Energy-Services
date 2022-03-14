@@ -27,7 +27,10 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
 	public Page<Cliente> findAllByOrderByRagioneSociale(Pageable pageable);
 
-	public Page<Cliente> findAllByOrderBySedeLegaleComuneProvincia(Pageable pageable);
+	//public Page<Cliente> findAllByOrderBySedeLegaleProvincia(Pageable pageable);
+	
+	
+	
 	
 
 	public List<Cliente> findByRagioneSocialeContaining(String fisso);

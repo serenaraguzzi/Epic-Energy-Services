@@ -1,7 +1,7 @@
 package it.be.energy.controller;
 
-import java.util.Optional;
 
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,12 +25,10 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.be.energy.exception.ClienteException;
 import it.be.energy.model.Cliente;
 import it.be.energy.service.ClienteService;
-import lombok.extern.slf4j.Slf4j;
 
 
 @SecurityRequirement(name = "bearerAuth")
 @RestController
-@Slf4j
 @RequestMapping("/cliente")
 public class ClienteController {
 
@@ -49,8 +47,8 @@ public class ClienteController {
 		}
 	}
 
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
-	@Operation(summary = "Trova tutti i clienti con un id", description = "Trova tutti i clienti con un id")
+	
+	@Operation(summary = "Trova un cliente con un id", description = "Trova un cliente con un id")
 	@GetMapping(value = "/trovaclientebyid")
 	public ResponseEntity<Cliente> trovaById(@PathVariable Long id) throws ClienteException {
 		Optional<Cliente> clienteTrovato = clienteService.trovaClienteById(id);
@@ -63,13 +61,12 @@ public class ClienteController {
 	}
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@Operation(summary = "Inserisci un cliente", description = "Inserire un cliente")
+	@Operation(summary = "Inserisci un cliente", description = "Inserisci un cliente")
 	@PostMapping(value = "/inseriscicliente", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String addCliente(@RequestBody Cliente cliente) {
-	//	@log.info("*** INSERIMENTO CLIENTE IN CORSO ***");
 		clienteService.inserisciCliente(cliente);
 		return "Cliente salvato!";
-	//	 @log.info("*** INSERIMENTO CLIENTE COMPLETATO ***");
+
 
 	}
 
@@ -90,84 +87,86 @@ public class ClienteController {
 
 	}
 	
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
-	@Operation(summary = "Trova tutti i clienti", description = "Trova tutti i clienti")
-	@GetMapping(value = "/trovatuttknki")
+	
+	
+	
+	
+	
+	
+	
+	@Operation(summary = "Ordina i clienti per fatturato annuale", description = "Ordina i clienti per fatturato annuale")
+	@GetMapping(value = "/ordinaclientibyfatturatoannuale")
 	public ResponseEntity<Page<Cliente>> ordinaByFatturatoAnnuale(Pageable pageable) {
 		Page<Cliente> trovaTutti = clienteService.findAllByOrderByFatturatoAnnuale(pageable);
 		if (trovaTutti.hasContent()) {
 			return new ResponseEntity<>(trovaTutti, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
-	@Operation(summary = "Trova tutti i clienti", description = "Trova tutti i clienti")
-	@GetMapping(value = "/trovatui")
+	@Operation(summary = "Ordina i clienti per data inserimento", description = "Ordina i clienti per data inserimento")
+	@GetMapping(value = "/ordinaclientibydatainserimento")
 	public ResponseEntity<Page<Cliente>> ordinaByDataInserimento(Pageable pageable) {
 		Page<Cliente> trovaTutti = clienteService.findAllByOrderByDataInserimento(pageable);
 		if (trovaTutti.hasContent()) {
 			return new ResponseEntity<>(trovaTutti, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
-	@Operation(summary = "Trova tutti i clienti", description = "Trova tutti i clienti")
-	@GetMapping(value = "/trovati")
+	@Operation(summary = "Ordina i clienti per data ultimo contatto", description = "Ordina i clienti per data ultimo contatto")
+	@GetMapping(value = "/ordinaclientibydataultimocontatto")
 	public ResponseEntity<Page<Cliente>> ordinaByDataUltimoContatto(Pageable pageable) {
 		Page<Cliente> trovaTutti = clienteService.findAllByOrderByDataUltimoContatto(pageable);
 		if (trovaTutti.hasContent()) {
 			return new ResponseEntity<>(trovaTutti, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
-	@Operation(summary = "Trova tutti i clienti", description = "Trova tutti i clienti")
-	@GetMapping(value = "/troatutti")
+	@Operation(summary = "Ordina i clienti per ragione sociale", description = "Ordina i clienti per ragione sociale")
+	@GetMapping(value = "/ordinaclientibyragionesociale")
 	public ResponseEntity<Page<Cliente>> ordinaByRagioneSociale(Pageable pageable) {
 		Page<Cliente> trovaTutti = clienteService.findAllByOrderByRagioneSociale(pageable);
 		if (trovaTutti.hasContent()) {
 			return new ResponseEntity<>(trovaTutti, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
 	
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
-	@Operation(summary = "Trova tutti i clienti", description = "Trova tutti i clienti")
-	@GetMapping(value = "/ti")
-	public ResponseEntity<Page<Cliente>> ordinaBySedeLegaleComuneProvincia(Pageable pageable) {
-		Page<Cliente> trovaTutti = clienteService.findAllByOrderBySedeLegaleComuneProvincia(pageable);
-		if (trovaTutti.hasContent()) {
-			return new ResponseEntity<>(trovaTutti, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
-		}
-	}
+//	@Operation(summary = "Ordina i clienti per sede legale provincia", description = "Ordina i clienti per sede legale provincia")
+//	@GetMapping(value = "/ordinaclientibysedelegaleprovincia")
+//	public ResponseEntity<Page<Cliente>> ordinaBySedeLegaleProvincia(Pageable pageable) {
+//		Page<Cliente> trovaTutti = clienteService.findAllByOrderBySedeLegaleProvincia(pageable);
+//		if (trovaTutti.hasContent()) {
+//			return new ResponseEntity<>(trovaTutti, HttpStatus.OK);
+//		} else {
+//			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+//		}
+//	}
+//	
 	
 	
+
 	
-	
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
-	@Operation(summary = "Trova tutti i clienti", description = "Trova tutti i clienti")
-	@GetMapping(value = "/trovatutt")
-	public ResponseEntity<Page<Cliente>> ordinaByRagioneSocialeContaining(String fisso) {
-		Page<Cliente> trovaTutti = (Page<Cliente>) clienteService.findByRagioneSocialeContaining(fisso);
-		if (trovaTutti.hasContent()) {
-			return new ResponseEntity<>(trovaTutti, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
-		}
-	}
-	
-	
-	
+//	@PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
+//	@Operation(summary = "Trova tutti i clienti con un id", description = "Trova tutti i clienti con un id")
+//	@GetMapping(value = "/trovaclientebyid")
+//	public ResponseEntity<Cliente> trovaByDataInserimento(@PathVariable LocalDate dataInserimento) throws ClienteException {
+//		Optional<Cliente> clienteTrovato = clienteService.findByDataInserimento(dataInserimento);
+//		if (clienteTrovato.isPresent()) {
+//			return new ResponseEntity<>(clienteTrovato.get(), HttpStatus.OK);
+//		} else {
+//			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+//
+//		}
+//	}
+//	
 	
 	
 	
