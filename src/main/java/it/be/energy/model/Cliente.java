@@ -4,7 +4,9 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -44,8 +46,18 @@ public class Cliente {
 	@OneToOne
 	private Indirizzo sedeOperativa;
 	private TipoCliente tipoCliente;
-	@OneToMany(mappedBy = "cliente")
+	
+	@OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 	List<Fattura> fatture;
+	
+		
+	}
+	
+	
+	
+	
+		
+	
 
-}
+

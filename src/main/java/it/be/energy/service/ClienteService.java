@@ -2,6 +2,7 @@ package it.be.energy.service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,8 +56,8 @@ public class ClienteService {
 		}
 	}
 
-	public Page<Cliente> findAll(Pageable pageable) {
-		return clienteRepository.findAll(pageable);
+	public List<Cliente> findAll() {
+		return clienteRepository.findAll();
 	}
 
 	public Optional<Cliente> trovaClienteById(Long id) throws ClienteException {
@@ -69,33 +70,65 @@ public class ClienteService {
 		}
 
 	}
-
-	public Page<Cliente> findAllByOrderByRagioneSociale(Pageable pageable) {
-		return clienteRepository.findAllByOrderByRagioneSociale(pageable);
-	}
-
-	public Page<Cliente> findAllByOrderByFatturatoAnnuale(Pageable pageable) {
-		return clienteRepository.findAllByOrderByFatturatoAnnuale(pageable);
-	}
-
-	public Page<Cliente> findAllByOrderByDataInserimento(Pageable pageable) {
-		return clienteRepository.findAllByOrderByDataInserimento(pageable);
-	}
-
-	public Page<Cliente> findAllByOrderByDataUltimoContatto(Pageable pageable) {
-		return clienteRepository.findAllByOrderByDataUltimoContatto(pageable);
-	}
-
-//	public Page<Cliente> findAllByOrderBySedeLegaleProvincia(Pageable pageable) {
-//		return clienteRepository.findAllByOrderBySedeLegaleProvincia(pageable);
+//
+//	public Page<Cliente> findAllByOrderByRagioneSociale(Pageable pageable) {
+//		return clienteRepository.findAllByOrderByRagioneSociale(pageable);
 //	}
+//
+//	public Page<Cliente> findAllByOrderByFatturatoAnnuale(Pageable pageable) {
+//		return clienteRepository.findAllByOrderByFatturatoAnnuale(pageable);
+//	}
+//
+//	public Page<Cliente> findAllByOrderByDataInserimento(Pageable pageable) {
+//		return clienteRepository.findAllByOrderByDataInserimento(pageable);
+//	}
+//
+//	public Page<Cliente> findAllByOrderByDataUltimoContatto(Pageable pageable) {
+//		return clienteRepository.findAllByOrderByDataUltimoContatto(pageable);
+//	}
+//
+//	public Page<Cliente> findAllByOrderBySedeLegaleComuneProvinciaNome(Pageable pageable) {
+//		return clienteRepository.findAllByOrderBySedeLegaleComuneProvinciaNome(pageable);
+//}
 
-	public List<Cliente> findByDataInserimento(LocalDate dataInserimento) {
-		return clienteRepository.findByDataInserimento(dataInserimento);
+	
+	
+	
+	
+	
+	public List<Cliente> findAllByOrderByRagioneSociale() {
+		return clienteRepository.findAllByOrderByRagioneSociale();
 	}
 
-	public List<Cliente> findByDataUltimoContatto(LocalDate dataUltimoContatto) {
-		return clienteRepository.findByDataUltimoContatto(dataUltimoContatto);
+	public List<Cliente> findAllByOrderByFatturatoAnnuale() {
+		return clienteRepository.findAllByOrderByFatturatoAnnuale();
+	}
+
+	public List<Cliente> findAllByOrderByDataInserimento() {
+		return clienteRepository.findAllByOrderByDataInserimento();
+	}
+
+	public List<Cliente> findAllByOrderByDataUltimoContatto() {
+		return clienteRepository.findAllByOrderByDataUltimoContatto();
+	}
+
+	public List<Cliente> findAllByOrderBySedeLegaleComuneProvinciaNome() {
+		return clienteRepository.findAllByOrderBySedeLegaleComuneProvinciaNome();
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	public List<Cliente> findByDataInserimento(Date data) {
+		return clienteRepository.findByDataInserimento(data);
+	}
+
+	public List<Cliente> findByDataUltimoContatto(Date data) {
+		return clienteRepository.findByDataUltimoContatto(data);
 	}
 
 	public List<Cliente> findByFatturatoAnnuale(BigDecimal fatturatoMin, BigDecimal fatturatoMax) {
@@ -105,5 +138,14 @@ public class ClienteService {
 	public List<Cliente> findByRagioneSocialeContaining(String fisso) {
 		return clienteRepository.findByRagioneSocialeContaining(fisso);
 	}
+
+	
+
+	
+	
+
+	
+
+	
 
 }

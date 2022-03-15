@@ -1,10 +1,9 @@
 package it.be.energy.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import it.be.energy.exception.IndirizzoException;
@@ -18,8 +17,8 @@ public class IndirizzoService {
 	IndirizzoRepository indirizzoRepository;
 	
 	
-	public Page<Indirizzo> findAll(Pageable pageable) {
-		return indirizzoRepository.findAll(pageable);
+	public List<Indirizzo> findAll() {
+		return indirizzoRepository.findAll();
 	}
 	
 	public Optional<Indirizzo> trovaIndirizzoById(Long id) throws IndirizzoException {

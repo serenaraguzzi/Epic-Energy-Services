@@ -1,5 +1,6 @@
 package it.be.energy.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,11 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.be.energy.exception.IndirizzoException;
 import it.be.energy.model.Indirizzo;
 import it.be.energy.service.IndirizzoService;
+import lombok.extern.slf4j.Slf4j;
 
 
 @SecurityRequirement(name = "bearerAuth")
+@Slf4j
 @RestController
 @RequestMapping("/indirizzo")
 public class IndirizzoController {
@@ -37,9 +40,9 @@ public class IndirizzoController {
 	
 	@Operation(summary = "Trova tutti gli indirizzi", description = "Trova tutti gli indirizzi")
 	@GetMapping(value = "/trovatutti")
-	public ResponseEntity<Page<Indirizzo>> trovaTutti(Pageable pageable) {
-		Page<Indirizzo> trovaTutti = indirizzoService.findAll(pageable);
-		if (trovaTutti.hasContent()) {
+	public ResponseEntity<List<Indirizzo>> trovaTutti() {
+		List<Indirizzo> trovaTutti = indirizzoService.findAll();
+		if (!trovaTutti.isEmpty()) {
 			return new ResponseEntity<>(trovaTutti, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
@@ -49,7 +52,7 @@ public class IndirizzoController {
 
 	
 	@Operation(summary = "Trova un indirizzo con un id", description = "Trova un indirizzo con un id")
-	@GetMapping(value = "/trovaindirizzobyid")
+	@GetMapping(value = "/trovaindirizzobyid/{id}")
 	public ResponseEntity<Indirizzo> trovaById(@PathVariable Long id) throws IndirizzoException {
 		Optional<Indirizzo> indirizzoTrovato = indirizzoService.trovaIndirizzoById(id);
 		if (indirizzoTrovato.isPresent()) {
@@ -72,7 +75,7 @@ public class IndirizzoController {
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@Operation(summary = "Aggiorna un indirizzo", description = "Aggiorna un indirizzo")
-	@PutMapping(value = "/aggiornaindirizzo", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value = "/aggiornaindirizzo{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String updateIndirizzo(@RequestBody Indirizzo indirizzo, @PathVariable Long id) throws IndirizzoException{
 		indirizzoService.modificaIndirizzo(indirizzo, id);
 		return "Aggiornamento effettuato!";

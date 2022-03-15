@@ -2,6 +2,7 @@ package it.be.energy.service;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,8 @@ public class FatturaService {
 	FatturaRepository fatturaRepository;
 	
 	
-	public Page<Fattura> findAll(Pageable pageable) {
-		return fatturaRepository.findAll(pageable);
+	public List<Fattura> findAll() {
+		return fatturaRepository.findAll();
 	}
 	
 	public Optional<Fattura> trovaFatturaById(Long id) throws FatturaException {
@@ -61,26 +62,26 @@ public class FatturaService {
 		}
 	}
 
-	public Page<Fattura> findByClienteRagioneSocialeLike(Pageable pageable, String nome){
-        return fatturaRepository.findByClienteRagioneSocialeLike(pageable, nome);
+	public List<Fattura> findByClienteRagioneSocialeLike(String nome){
+        return fatturaRepository.findByClienteRagioneSocialeLike(nome);
     }
 
 
 	
-    public Page<Fattura> findByStatoFattura(Pageable pageable, StatoFattura stato){
-        return fatturaRepository.findByStatoFattura(pageable, stato);
+    public List<Fattura> findByStatoFattura(StatoFattura stato){
+        return fatturaRepository.findByStatoFattura(stato);
     }
 
-    public Page<Fattura> findByDataFattura(Pageable pageable, Date data){
-        return fatturaRepository.findByData(pageable, data);
+    public List<Fattura> findByDataFattura(Date data){
+        return fatturaRepository.findByData(data);
     }
 
-    public Page<Fattura> findByAnnoFattura(Pageable pageable, Integer anno){
-        return fatturaRepository.findByAnno(pageable, anno);
+    public List<Fattura> findByAnnoFattura(Integer anno){
+        return fatturaRepository.findByAnno(anno);
     }
 
-    public Page<Fattura> findByImportoBetween(Pageable pageable, BigDecimal importoMin, BigDecimal importoMax){
-        return fatturaRepository.findByImportoBetween(pageable, importoMin, importoMax);
+    public List<Fattura> findByImportoBetween(BigDecimal importoMin, BigDecimal importoMax){
+        return fatturaRepository.findByImportoBetween(importoMin, importoMax);
     }
 
     

@@ -1,5 +1,6 @@
 package it.be.energy.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,13 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.be.energy.exception.StatoFatturaException;
+import it.be.energy.model.Fattura;
 import it.be.energy.model.StatoFattura;
 import it.be.energy.service.StatoFatturaService;
+import lombok.extern.slf4j.Slf4j;
 
 @SecurityRequirement(name = "bearerAuth")
+@Slf4j
 @RestController
 @RequestMapping("/statofattura")
 public class StatoFatturaController {
@@ -33,10 +37,20 @@ public class StatoFatturaController {
 	StatoFatturaService statoFatturaService;
 	
 	
+	@Operation(summary = "Trova tutti gli stati fattura", description = "Trova tutti gli stati fattura")
+	@GetMapping(value = "/trovatutti")
+	public ResponseEntity<List<StatoFattura>> trovaTutti() {
+		List<StatoFattura> trovaTutti = statoFatturaService.findAll();
+		if (!trovaTutti.isEmpty()) {
+			return new ResponseEntity<>(trovaTutti, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+		}
+	}
 
 	
 	@Operation(summary = "Trova uno stato fattura con un id", description = "Trova uno stato fattura con un id")
-	@GetMapping(value = "/trovastatofatturabyid")
+	@GetMapping(value = "/trovastatofatturabyid/{id}")
 	public ResponseEntity<StatoFattura> trovaById(@PathVariable Long id) throws StatoFatturaException {
 		Optional<StatoFattura> statoFatturaTrovato = statoFatturaService.trovaStatoFatturaById(id);
 		if (statoFatturaTrovato.isPresent()) {
@@ -59,7 +73,7 @@ public class StatoFatturaController {
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@Operation(summary = "Aggiorna uno stato fattura", description = "Aggiorna uno sttao fattura")
-	@PutMapping(value = "/aggiornastatofattura", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value = "/aggiornastatofattura/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String updateStatoFattura(@RequestBody StatoFattura statoFattura, @PathVariable Long id) throws StatoFatturaException {
 		statoFatturaService.modificaStatoFattura(statoFattura, id);
 		return "Aggiornamento effettuato!";

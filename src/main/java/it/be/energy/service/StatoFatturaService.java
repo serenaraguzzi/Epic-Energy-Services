@@ -1,11 +1,13 @@
 package it.be.energy.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.be.energy.exception.StatoFatturaException;
+import it.be.energy.model.Fattura;
 import it.be.energy.model.StatoFattura;
 import it.be.energy.repository.StatoFatturaRepository;
 
@@ -15,6 +17,13 @@ public class StatoFatturaService {
 	@Autowired
 	StatoFatturaRepository statoFatturaRepository;
 
+	public List<StatoFattura> findAll() {
+		return statoFatturaRepository.findAll();
+	}
+	
+	
+	
+	
 	public Optional<StatoFattura> trovaStatoFatturaById(Long id) throws StatoFatturaException {
 		Optional<StatoFattura> statoFatturaTrovato = statoFatturaRepository.findById(id);
 		if (statoFatturaTrovato.isPresent()) {
@@ -24,6 +33,9 @@ public class StatoFatturaService {
 	}
 
 	}
+	
+	
+	
 	
 	
 	public StatoFattura inserisciStatoFattura(StatoFattura statoFattura) {

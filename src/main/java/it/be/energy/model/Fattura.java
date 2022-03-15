@@ -1,8 +1,9 @@
 package it.be.energy.model;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +29,7 @@ public class Fattura {
 	private BigDecimal importo;
 	@ManyToOne
 	private StatoFattura statoFattura;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.DETACH)
 	private Cliente cliente;
 	
 }

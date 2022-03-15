@@ -1,5 +1,6 @@
 package it.be.energy.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,11 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.be.energy.exception.ProvinciaException;
 import it.be.energy.model.Provincia;
 import it.be.energy.service.ProvinciaService;
+import lombok.extern.slf4j.Slf4j;
 
 
 @SecurityRequirement(name = "bearerAuth")
+@Slf4j
 @RestController
 @RequestMapping("/provincia")
 
@@ -32,9 +35,9 @@ public class ProvinciaController {
 
 	@Operation(summary = "Trova tutte le province", description = "Trova tutte le province")
 	@GetMapping(value = "/trovatutte")
-	public ResponseEntity<Page<Provincia>> trovaTutti(Pageable pageable) {
-		Page<Provincia> trovaTutte = provinciaService.findAll(pageable);
-		if (trovaTutte.hasContent()) {
+	public ResponseEntity<List<Provincia>> trovaTutti() {
+		List<Provincia> trovaTutte = provinciaService.findAll();
+		if (!trovaTutte.isEmpty()) {
 			return new ResponseEntity<>(trovaTutte, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
@@ -43,7 +46,7 @@ public class ProvinciaController {
 
 	
 	@Operation(summary = "Trova una provincia con un id", description = "Trova una provincia con un id")
-	@GetMapping(value = "/trovaprovinciabyid")
+	@GetMapping(value = "/trovaprovinciabyid/{id}")
 	public ResponseEntity<Provincia> trovaById(@PathVariable Long id) throws ProvinciaException {
 		Optional<Provincia> provinciaTrovata = provinciaService.trovaProvinciaById(id);
 		if (provinciaTrovata.isPresent()) {
