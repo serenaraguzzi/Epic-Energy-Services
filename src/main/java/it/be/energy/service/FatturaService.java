@@ -1,13 +1,11 @@
 package it.be.energy.service;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import it.be.energy.exception.FatturaException;
@@ -42,6 +40,8 @@ public class FatturaService {
 	}
 	
 	public void cancellaFatturaById(Long id) {
+		Fattura f = fatturaRepository.getById(id);
+		f.setCliente(null);
 		fatturaRepository.deleteById(id);
 	}
 	
@@ -62,8 +62,8 @@ public class FatturaService {
 		}
 	}
 
-	public List<Fattura> findByClienteRagioneSocialeLike(String nome){
-        return fatturaRepository.findByClienteRagioneSocialeLike(nome);
+	public List<Fattura> findByClienteRagioneSocialeLike(String ragioneSociale){
+        return fatturaRepository.findByClienteRagioneSocialeLike(ragioneSociale);
     }
 
 
@@ -72,7 +72,7 @@ public class FatturaService {
         return fatturaRepository.findByStatoFattura(stato);
     }
 
-    public List<Fattura> findByDataFattura(Date data){
+    public List<Fattura> findByDataFattura(LocalDate data){
         return fatturaRepository.findByData(data);
     }
 

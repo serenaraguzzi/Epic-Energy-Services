@@ -44,6 +44,7 @@ public class StatoFatturaService {
 	}
 	
 	public void cancellaStatoFatturaById(Long id) {
+		
 		statoFatturaRepository.deleteById(id);
 	}
 	

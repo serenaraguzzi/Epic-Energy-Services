@@ -78,6 +78,8 @@ public class AuthController {
 			return new ResponseEntity<String>("username già in uso!", HttpStatus.BAD_REQUEST);
 		}
 		User userRegistrato = new User();
+		userRegistrato.setNome(registraUser.getNome());
+		userRegistrato.setCognome(registraUser.getCognome());
 		userRegistrato.setUserName(registraUser.getUserName());
 		userRegistrato.setEmail(registraUser.getEmail());
 		userRegistrato.setPassword(encoder.encode(registraUser.getPassword()));

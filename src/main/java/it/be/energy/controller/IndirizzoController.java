@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -25,11 +23,10 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.be.energy.exception.IndirizzoException;
 import it.be.energy.model.Indirizzo;
 import it.be.energy.service.IndirizzoService;
-import lombok.extern.slf4j.Slf4j;
 
 
 @SecurityRequirement(name = "bearerAuth")
-@Slf4j
+
 @RestController
 @RequestMapping("/indirizzo")
 public class IndirizzoController {
@@ -75,7 +72,7 @@ public class IndirizzoController {
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@Operation(summary = "Aggiorna un indirizzo", description = "Aggiorna un indirizzo")
-	@PutMapping(value = "/aggiornaindirizzo{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value = "/aggiornaindirizzo/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String updateIndirizzo(@RequestBody Indirizzo indirizzo, @PathVariable Long id) throws IndirizzoException{
 		indirizzoService.modificaIndirizzo(indirizzo, id);
 		return "Aggiornamento effettuato!";
@@ -85,8 +82,8 @@ public class IndirizzoController {
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@Operation(summary = "Cancella un indirizzo", description = "Cancella un indirizzo")
-	@DeleteMapping("/cancellaindirizzo")
-	public String deleteIndirizzo(@RequestParam Long id) {
+	@DeleteMapping("/cancellaindirizzo/{id}")
+	public String deleteIndirizzo(@PathVariable Long id) {
 		indirizzoService.cancellaIndirizzoById(id);
 		return "Indirizzo cancellato!";
 

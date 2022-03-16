@@ -2,13 +2,10 @@ package it.be.energy.service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import it.be.energy.exception.ClienteException;
@@ -120,14 +117,14 @@ public class ClienteService {
 	
 	
 	
+
 	
 	
-	
-	public List<Cliente> findByDataInserimento(Date data) {
+	public List<Cliente> findByDataInserimento(LocalDate data) {
 		return clienteRepository.findByDataInserimento(data);
 	}
 
-	public List<Cliente> findByDataUltimoContatto(Date data) {
+	public List<Cliente> findByDataUltimoContatto(LocalDate data) {
 		return clienteRepository.findByDataUltimoContatto(data);
 	}
 

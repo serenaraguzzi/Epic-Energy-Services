@@ -21,13 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.be.energy.exception.StatoFatturaException;
-import it.be.energy.model.Fattura;
 import it.be.energy.model.StatoFattura;
 import it.be.energy.service.StatoFatturaService;
-import lombok.extern.slf4j.Slf4j;
 
 @SecurityRequirement(name = "bearerAuth")
-@Slf4j
+
 @RestController
 @RequestMapping("/statofattura")
 public class StatoFatturaController {
@@ -81,8 +79,8 @@ public class StatoFatturaController {
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@Operation(summary = "Cancella uno stato fattura", description = "Cancella uno stato fattura")
-	@DeleteMapping("/cancellastatofattura")
-	public String deleteStatoFattura(@RequestParam Long id) {
+	@DeleteMapping("/cancellastatofattura/{id}")
+	public String deleteStatoFattura(@PathVariable Long id) {
 		statoFatturaService.cancellaStatoFatturaById(id);
 		return "Stato fattura cancellato!";
 

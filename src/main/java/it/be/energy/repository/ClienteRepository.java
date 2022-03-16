@@ -2,12 +2,8 @@ package it.be.energy.repository;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -42,19 +38,19 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
 	public List<Cliente> findAllByOrderBySedeLegaleComuneProvinciaNome();
 	
-	
 
 	public List<Cliente> findByRagioneSocialeContaining(String fisso);
 
 	
-	//@Query("SELECT c FROM Cliente c WHERE c.dataInserimento=:dataInserimento")
-	public List<Cliente> findByDataInserimento(Date data);
+	public List<Cliente> findByDataInserimento(LocalDate data);
 
-	@Query("SELECT c FROM Cliente c WHERE c.dataUltimoContatto=:dataUltimoContatto")
-	public List<Cliente> findByDataUltimoContatto(Date data);
+	
+	public List<Cliente> findByDataUltimoContatto(LocalDate data);
 
 	@Query("SELECT c FROM Cliente c WHERE c.fatturatoAnnuale BETWEEN :fatturatoMin AND :fatturatoMax")
 	public List<Cliente> findByFatturatoAnnuale(BigDecimal fatturatoMin, BigDecimal fatturatoMax);
+
+	
 
 
 

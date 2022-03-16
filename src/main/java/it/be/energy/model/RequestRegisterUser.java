@@ -8,6 +8,8 @@ import lombok.Data;
 public class RequestRegisterUser {
 
 	private String userName;
+	private String nome;
+	private String cognome;
 	private String password;
 	private String email;
 	private Set<String> roles = new HashSet<>();

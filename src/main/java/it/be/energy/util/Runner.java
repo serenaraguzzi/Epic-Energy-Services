@@ -2,9 +2,7 @@ package it.be.energy.util;
 
 import java.io.FileReader;
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,79 +57,79 @@ public class Runner implements CommandLineRunner {
 
 	private void initPopolaDb() throws Exception {
 		Indirizzo i1 = new Indirizzo();
-		i1.setCap("26020");
-		i1.setCivico("30");
-		i1.setLocalita("Campagna");
-		i1.setVia("bizantini");
+		i1.setCap("37062");
+		i1.setCivico("12");
+		i1.setLocalita("Villafranca di Verona");
+		i1.setVia("Via San Luca");
 		i1.setComune(comuneRepository.getById(1l));
 		indirizzoRepository.save(i1);
 
 		Indirizzo i2 = new Indirizzo();
-		i2.setCap("26000");
+		i2.setCap("88046");
 		i2.setCivico("12");
-		i2.setLocalita("Campaglknlkna");
-		i2.setVia("bizagsgtini");
+		i2.setLocalita("Bianco");
+		i2.setVia("Via Campagna");
 		i2.setComune(comuneRepository.getById(2l));
 		indirizzoRepository.save(i2);
 
 		Indirizzo i3 = new Indirizzo();
-		i3.setCap("26010");
+		i3.setCap("10030");
 		i3.setCivico("52");
-		i3.setLocalita("stocavolo");
-		i3.setVia("via de qua");
+		i3.setLocalita("Rosso");
+		i3.setVia("Via di StoCavolo");
 		i3.setComune(comuneRepository.getById(3l));
 		indirizzoRepository.save(i3);
 
 		Indirizzo i4 = new Indirizzo();
-		i4.setCap("56124");
-		i4.setCivico("69");
-		i4.setLocalita("sticavoli");
-		i4.setVia("ds");
+		i4.setCap("12070");
+		i4.setCivico("67");
+		i4.setLocalita("Azzurra");
+		i4.setVia("Via Vai");
 		i4.setComune(comuneRepository.getById(4l));
 		indirizzoRepository.save(i4);
 
 		Indirizzo i5 = new Indirizzo();
-		i5.setCap("56124");
-		i5.setCivico("69");
-		i5.setLocalita("sticavoli");
-		i5.setVia("ds");
+		i5.setCap("37010");
+		i5.setCivico("74");
+		i5.setLocalita("Lilla");
+		i5.setVia("Via DiQua");
 		i5.setComune(comuneRepository.getById(5l));
 		indirizzoRepository.save(i5);
 
 		Indirizzo i6 = new Indirizzo();
-		i6.setCap("56124");
-		i6.setCivico("69");
-		i6.setLocalita("sticavoli");
-		i6.setVia("ds");
+		i6.setCap("00020");
+		i6.setCivico("11");
+		i6.setLocalita("Viola");
+		i6.setVia("Via CheNeSo");
 		i6.setComune(comuneRepository.getById(6l));
 		indirizzoRepository.save(i6);
 
 		Indirizzo i7 = new Indirizzo();
-		i7.setCap("56124");
-		i7.setCivico("69");
-		i7.setLocalita("sticavoli");
-		i7.setVia("ds");
+		i7.setCap("00030");
+		i7.setCivico("13");
+		i7.setLocalita("Blu");
+		i7.setVia("Via DiQua Che TePorto DeLa");
 		i7.setComune(comuneRepository.getById(7l));
 		indirizzoRepository.save(i7);
 
 		Indirizzo i8 = new Indirizzo();
-		i8.setCap("56124");
-		i8.setCivico("69");
-		i8.setLocalita("sticavoli");
-		i8.setVia("ds");
+		i8.setCap("16150");
+		i8.setCivico("108");
+		i8.setLocalita("Giallo");
+		i8.setVia("Via del Presidentissimo");
 		i8.setComune(comuneRepository.getById(8l));
 		indirizzoRepository.save(i8);
 
 		
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date data = sdf.parse("2020-02-12");
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//		Date data = sdf.parse("2020-02-12");
 		
 		
 
 	
 		Cliente cliente = new Cliente();
-		cliente.setRagioneSociale("Tabolacci Industries");
+		cliente.setRagioneSociale("TabolacciProductions");
 		cliente.setPIva("ABC123");
 		cliente.setEmail("tabind@gmail.com");
 		cliente.setDataInserimento(LocalDate.parse("2021-03-14"));
@@ -143,13 +141,13 @@ public class Runner implements CommandLineRunner {
 		cliente.setNomeContatto("Alessio");
 		cliente.setCognomeContatto("Tabolacci");
 		cliente.setNumeroContatto("3408956244");
-		cliente.setSedeLegale(indirizzoRepository.getById(1l));
-		cliente.setSedeOperativa(indirizzoRepository.getById(2l));
+		cliente.setSedeLegale(indirizzoRepository.getById(2l));
+		cliente.setSedeOperativa(indirizzoRepository.getById(1l));
 		cliente.setTipoCliente(TipoCliente.SRL);
 		
 		
 		Cliente cliente1 = new Cliente();
-		cliente1.setRagioneSociale("Guidi Industries");
+		cliente1.setRagioneSociale("GuidiIndustries");
 		cliente1.setPIva("DEF456");
 		cliente1.setEmail("simo4president@gmail.com");
 		cliente1.setDataInserimento(LocalDate.parse("2021-02-10"));
@@ -163,11 +161,11 @@ public class Runner implements CommandLineRunner {
 		cliente1.setNumeroContatto("3478841365");
 		cliente1.setSedeLegale(indirizzoRepository.getById(4l));
 		cliente1.setSedeOperativa(indirizzoRepository.getById(3l));
-		cliente1.setTipoCliente(TipoCliente.SPA);
+		cliente1.setTipoCliente(TipoCliente.PA);
 		
 		
 		Cliente cliente2 = new Cliente();
-		cliente2.setRagioneSociale("Pachi Industries");
+		cliente2.setRagioneSociale("PachiKiteSurfing");
 		cliente2.setPIva("GHI789");
 		cliente2.setEmail("pachino@gmail.com");
 		cliente2.setDataInserimento(LocalDate.parse("2021-02-22"));
@@ -179,13 +177,13 @@ public class Runner implements CommandLineRunner {
 		cliente2.setNomeContatto("Pachino");
 		cliente2.setCognomeContatto("Smurfe");
 		cliente2.setNumeroContatto("3495211022");
-		cliente2.setSedeLegale(indirizzoRepository.getById(5l));
-		cliente2.setSedeOperativa(indirizzoRepository.getById(6l));
+		cliente2.setSedeLegale(indirizzoRepository.getById(6l));
+		cliente2.setSedeOperativa(indirizzoRepository.getById(5l));
 		cliente2.setTipoCliente(TipoCliente.SPA);
 		
 		
 		Cliente cliente3 = new Cliente();
-		cliente3.setRagioneSociale("Scassaioli Industries");
+		cliente3.setRagioneSociale("ScassaioliSAS");
 		cliente3.setPIva("LMN101");
 		cliente3.setEmail("giuliano@gmail.com");
 		cliente3.setDataInserimento(LocalDate.parse("2021-05-12"));
@@ -214,7 +212,7 @@ public class Runner implements CommandLineRunner {
 		
 		
 		StatoFattura s2 = new StatoFattura();
-		s2.setNome("inviata al cliente");
+		s2.setNome("transazione in corso");
 	
 		
 		StatoFattura s3 = new StatoFattura();
@@ -222,7 +220,7 @@ public class Runner implements CommandLineRunner {
 	
 		
 		StatoFattura s4 = new StatoFattura();
-		s4.setNome("da inviare al cliente");
+		s4.setNome("inviata al cliente");
 		
 		
 		statoFatturaRepository.save(s1);
@@ -235,8 +233,8 @@ public class Runner implements CommandLineRunner {
 		
 		Fattura f = new Fattura();
 		f.setNumeroFattura(40);
-		f.setAnno(2002);
-		f.setData(data);
+		f.setAnno(2021);
+		f.setData(LocalDate.parse("2021-05-12"));
 		f.setImporto(new BigDecimal(100));
 		f.setStatoFattura(s1);
 		f.setCliente(cliente3);
@@ -244,64 +242,64 @@ public class Runner implements CommandLineRunner {
 		
 		Fattura f1 = new Fattura();
 		f1.setNumeroFattura(51);
-		f1.setAnno(2002);
-		f1.setData(data);
-		f1.setImporto(new BigDecimal(100));
+		f1.setAnno(2022);
+		f1.setData(LocalDate.parse("2022-01-12"));
+		f1.setImporto(new BigDecimal(150));
 		f1.setStatoFattura(s1);
 		f1.setCliente(cliente2);
 		
 		
 		Fattura f2 = new Fattura();
 		f2.setNumeroFattura(78);
-		f2.setAnno(2002);
-		f2.setData(data);
-		f2.setImporto(new BigDecimal(100));
+		f2.setAnno(2021);
+		f2.setData(LocalDate.parse("2021-01-11"));
+		f2.setImporto(new BigDecimal(300));
 		f2.setStatoFattura(s2);
 		f2.setCliente(cliente3);
 		
 		
 		Fattura f3 = new Fattura();
 		f3.setNumeroFattura(74);
-		f3.setAnno(2002);
-		f3.setData(data);
-		f3.setImporto(new BigDecimal(100));
-		f3.setStatoFattura(s3);
+		f3.setAnno(2022);
+		f3.setData(LocalDate.parse("2022-01-10"));
+		f3.setImporto(new BigDecimal(130));
+		f3.setStatoFattura(s1);
 		f3.setCliente(cliente2);
 		fatturaRepository.save(f3);
 		
 		Fattura f4 = new Fattura();
 		f4.setNumeroFattura(11);
-		f4.setAnno(2002);
-		f4.setData(data);
-		f4.setImporto(new BigDecimal(100));
-		f4.setStatoFattura(s4);
+		f4.setAnno(2022);
+		f4.setData(LocalDate.parse("2022-01-09"));
+		f4.setImporto(new BigDecimal(190));
+		f4.setStatoFattura(s2);
 		f4.setCliente(cliente1);
 		fatturaRepository.save(f4);
 		
 		Fattura f5 = new Fattura();
 		f5.setNumeroFattura(13);
-		f5.setAnno(2002);
-		f5.setData(data);
-		f5.setImporto(new BigDecimal(100));
-		f5.setStatoFattura(s2);
+		f5.setAnno(2022);
+		f5.setData(LocalDate.parse("2022-01-07"));
+		f5.setImporto(new BigDecimal(250));
+		f5.setStatoFattura(s4);
 		f5.setCliente(cliente);
 		fatturaRepository.save(f5);
 		
 		Fattura f6 = new Fattura();
 		f6.setNumeroFattura(15);
-		f6.setAnno(2002);
-		f6.setData(data);
-		f6.setImporto(new BigDecimal(100));
+		f6.setAnno(2022);
+		f6.setData(LocalDate.parse("2022-01-05"));
+		f6.setImporto(new BigDecimal(170));
 		f6.setStatoFattura(s1);
 		f6.setCliente(cliente1);
 		fatturaRepository.save(f6);
 		
 		Fattura f7 = new Fattura();
 		f7.setNumeroFattura(79);
-		f7.setAnno(2002);
-		f7.setData(data);
-		f7.setImporto(new BigDecimal(100));
-		f7.setStatoFattura(s2);
+		f7.setAnno(2021);
+		f7.setData(LocalDate.parse("2021-01-04"));
+		f7.setImporto(new BigDecimal(165));
+		f7.setStatoFattura(s3);
 		f7.setCliente(cliente);
 		fatturaRepository.save(f7);
 		

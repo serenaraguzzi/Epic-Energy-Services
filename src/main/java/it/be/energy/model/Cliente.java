@@ -44,10 +44,14 @@ public class Cliente {
 	@OneToOne
 	private Indirizzo sedeLegale;
 	@OneToOne
+	
 	private Indirizzo sedeOperativa;
 	private TipoCliente tipoCliente;
 	
+	
 	@OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	
+	
 	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 	List<Fattura> fatture;
 	

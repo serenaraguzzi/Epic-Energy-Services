@@ -1,13 +1,12 @@
 package it.be.energy.controller;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -28,11 +27,10 @@ import it.be.energy.exception.FatturaException;
 import it.be.energy.model.Fattura;
 import it.be.energy.model.StatoFattura;
 import it.be.energy.service.FatturaService;
-import lombok.extern.slf4j.Slf4j;
 
 
 @SecurityRequirement(name = "bearerAuth")
-@Slf4j
+
 @RestController
 @RequestMapping("/fattura")
 public class FatturaController {
@@ -79,7 +77,7 @@ public class FatturaController {
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@Operation(summary = "Aggiorna una fattura", description = "Aggiorna una fattura")
-	@PutMapping(value = "/aggiornacliente/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value = "/aggiornafattura/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String updateFattura(@RequestBody Fattura fattura, @PathVariable Long id) throws FatturaException {
 		fatturaService.modificaFattura(fattura, id);
 		return "Aggiornamento effettuato!";
@@ -87,8 +85,8 @@ public class FatturaController {
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@Operation(summary = "Cancella una fattura", description = "Cancella una fattura")
-	@DeleteMapping("/cancellacliente")
-	public String deleteFattura(@RequestParam Long id) {
+	@DeleteMapping("/cancellafattura/{id}")
+	public String deleteFattura(@PathVariable Long id) {
 		fatturaService.cancellaFatturaById(id);
 		return "Fattura cancellata!";
 
@@ -101,10 +99,10 @@ public class FatturaController {
 	
 	
 	
-    @GetMapping("/trovafattureperragionesociale")
+    @GetMapping("/trovafattureperragionesociale/{ragioneSociale}")
     @Operation(summary = "Trova una fattura per ragione sociale", description = "Trova una fattura per ragione sociale")
-    public ResponseEntity<List<Fattura>> findByClienteRagioneSocialeLike(String nome) {
-        List<Fattura> trovate = fatturaService.findByClienteRagioneSocialeLike(nome); 
+    public ResponseEntity<List<Fattura>> findByClienteRagioneSocialeLike(@PathVariable String ragioneSociale) {
+        List<Fattura> trovate = fatturaService.findByClienteRagioneSocialeLike(ragioneSociale); 
         if(!trovate.isEmpty()) {
             return new ResponseEntity<>(trovate , HttpStatus.OK);
         }else {
@@ -113,9 +111,9 @@ public class FatturaController {
     }
 
    
-    @GetMapping("/trovafattureperstatofattura")
+    @GetMapping("/trovafattureperstatofattura/{id}")
     @Operation(summary = "Trova una fattura per stato fattura", description = "Trova una fattura per stato fattura")
-    public ResponseEntity<List<Fattura>> findByStatoFattura(StatoFattura statoFattura) {
+    public ResponseEntity<List<Fattura>> findByStatoFattura(@PathVariable StatoFattura statoFattura) {
         List<Fattura> trovate = fatturaService.findByStatoFattura(statoFattura); 
         if(!trovate.isEmpty()) {
             return new ResponseEntity<>(trovate , HttpStatus.OK);
@@ -125,9 +123,9 @@ public class FatturaController {
 
     }
     
-    @GetMapping("/trovafattureperdatafattura")
+    @GetMapping("/trovafattureperdatafattura/{data}")
     @Operation(summary = "Trova una fattura per data fattura", description = "Trova una fattura per data fattura")
-    public ResponseEntity<List<Fattura>> findByDataFattura(Date data) {
+    public ResponseEntity<List<Fattura>> findByDataFattura(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd")LocalDate data) {
         List<Fattura> trovate = fatturaService.findByDataFattura(data); 
         if(!trovate.isEmpty()) {
             return new ResponseEntity<>(trovate , HttpStatus.OK);
@@ -137,9 +135,9 @@ public class FatturaController {
     }
 	
       
-        @GetMapping("/trovafattureperannofattura")
+        @GetMapping("/trovafattureperannofattura/{anno}")
         @Operation(summary = "Trova una fattura per anno fattura", description = "Trova una fattura per anno fattura")
-        public ResponseEntity<List<Fattura>> findByAnnoFattura(Integer anno) {
+        public ResponseEntity<List<Fattura>> findByAnnoFattura(@PathVariable Integer anno) {
             List<Fattura> trovate = fatturaService.findByAnnoFattura(anno); 
             if(!trovate.isEmpty()) {
                 return new ResponseEntity<>(trovate , HttpStatus.OK);
@@ -150,9 +148,9 @@ public class FatturaController {
         }
 
       
-        @GetMapping("/trovafattureperrangeimporto")
-        @Operation(summary = "Trova una fattura per range importo", description = "Trova unafattura per range importo")
-        public ResponseEntity<List<Fattura>> findByImportoBetween(BigDecimal importoMin, BigDecimal importoMax) {
+        @GetMapping("/trovafattureperrangeimporto/{importoMin}/{importoMax}")
+        @Operation(summary = "Trova una fattura per range importo", description = "Trova una fattura per range importo")
+        public ResponseEntity<List<Fattura>> findByImportoBetween(@PathVariable BigDecimal importoMin, @PathVariable BigDecimal importoMax) {
             List<Fattura> trovate = fatturaService.findByImportoBetween(importoMin, importoMax); 
             if(!trovate.isEmpty()) {
                 return new ResponseEntity<>(trovate , HttpStatus.OK);

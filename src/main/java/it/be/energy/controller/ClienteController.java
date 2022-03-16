@@ -4,13 +4,12 @@ package it.be.energy.controller;
 
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -96,8 +95,8 @@ public class ClienteController {
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@Operation(summary = "Cancella un cliente", description = "Cancella un cliente")
-	@DeleteMapping("/cancellacliente")
-	public String deleteCliente(@RequestParam Long id) {
+	@DeleteMapping("/cancellacliente/{id}")
+	public String deleteCliente(@PathVariable Long id) {
 		clienteService.cancellaClienteById(id);
 		return "Cliente cancellato!";
 
@@ -178,9 +177,9 @@ public class ClienteController {
 	
 
 	
-	@GetMapping("/trovaclientiperdatainserimento")
+	@GetMapping("/trovaclientiperdatainserimento/{data}")
     @Operation(summary = "Trova clienti per data inserimento", description = "Trova clienti per data inserimento")
-    public ResponseEntity<List<Cliente>> findByDataInserimento(Date data) {
+    public ResponseEntity<List<Cliente>> findByDataInserimento(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd")LocalDate data) {
         List<Cliente> trovati = clienteService.findByDataInserimento(data); 
         if(!trovati.isEmpty()) {
             return new ResponseEntity<>(trovati , HttpStatus.OK);
@@ -188,11 +187,15 @@ public class ClienteController {
             return new ResponseEntity<>(trovati , HttpStatus.NO_CONTENT);
         }
     }
-	
-	
-	@GetMapping("/trovaclientiperdataultimocontatto")
+
+   
+    
+    
+    
+    
+	@GetMapping("/trovaclientiperdataultimocontatto/{data}")
     @Operation(summary = "Trova clienti per data ultimo contatto", description = "Trova clienti per data ultimo contatto")
-    public ResponseEntity<List<Cliente>> findByDataUltimoContatto(Date data) {
+    public ResponseEntity<List<Cliente>> findByDataUltimoContatto(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd")LocalDate data) {
         List<Cliente> trovati = clienteService.findByDataUltimoContatto(data); 
         if(!trovati.isEmpty()) {
             return new ResponseEntity<>(trovati , HttpStatus.OK);
@@ -202,12 +205,12 @@ public class ClienteController {
     }
 	
 	
+
 	
 	
-	
-	@GetMapping("/trovaclientiperfatturatoannuale")
+	@GetMapping("/trovaclientiperfatturatoannuale/{fatturatoMin}/{fatturatoMax}")
     @Operation(summary = "Trova clienti per fatturato annuale", description = "Trova clienti per fatturato annuale")
-    public ResponseEntity<List<Cliente>> findByFatturatoAnnuale(BigDecimal fatturatoMin, BigDecimal fatturatoMax) {
+    public ResponseEntity<List<Cliente>> findByFatturatoAnnuale(@PathVariable BigDecimal fatturatoMin, @PathVariable BigDecimal fatturatoMax) {
         List<Cliente> trovati = clienteService.findByFatturatoAnnuale(fatturatoMin, fatturatoMax); 
         if(!trovati.isEmpty()) {
             return new ResponseEntity<>(trovati , HttpStatus.OK);
@@ -217,9 +220,9 @@ public class ClienteController {
     }
 	
 	
-	@GetMapping("/trovaclientiperragionesociale")
-    @Operation(summary = "Trova clienti per ragione sociale", description = "Trova clienti per ragione sociale")
-    public ResponseEntity<List<Cliente>> findByRagioneSocialeContaining(String fisso) {
+	@GetMapping("/trovaclientiperragionesociale/{fisso}")
+    @Operation(summary = "Trova clienti inserendo una parte del nome contenuta nella ragione sociale", description = "Trova clienti inserendo una parte del nome contenuta nella ragione sociale")
+    public ResponseEntity<List<Cliente>> findByRagioneSocialeContaining(@PathVariable String fisso) {
         List<Cliente> trovati = clienteService.findByRagioneSocialeContaining(fisso); 
         if(!trovati.isEmpty()) {
             return new ResponseEntity<>(trovati , HttpStatus.OK);
