@@ -6,4 +6,5 @@ public class StatoFatturaException extends Exception {
 	public StatoFatturaException(String message) {
 		super(message);
 	}
+	
 }

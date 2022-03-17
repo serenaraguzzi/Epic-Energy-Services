@@ -4,13 +4,10 @@ import java.io.FileReader;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
 import com.opencsv.CSVReader;
-
 import it.be.energy.model.Cliente;
 import it.be.energy.model.Comune;
 import it.be.energy.model.Fattura;
@@ -45,8 +42,6 @@ public class Runner implements CommandLineRunner {
 
 	@Autowired
 	StatoFatturaRepository statoFatturaRepository;
-
-	
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -120,14 +115,6 @@ public class Runner implements CommandLineRunner {
 		i8.setComune(comuneRepository.getById(8l));
 		indirizzoRepository.save(i8);
 
-		
-		
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//		Date data = sdf.parse("2020-02-12");
-		
-		
-
-	
 		Cliente cliente = new Cliente();
 		cliente.setRagioneSociale("TabolacciProductions");
 		cliente.setPIva("ABC123");
@@ -144,8 +131,7 @@ public class Runner implements CommandLineRunner {
 		cliente.setSedeLegale(indirizzoRepository.getById(2l));
 		cliente.setSedeOperativa(indirizzoRepository.getById(1l));
 		cliente.setTipoCliente(TipoCliente.SRL);
-		
-		
+
 		Cliente cliente1 = new Cliente();
 		cliente1.setRagioneSociale("GuidiIndustries");
 		cliente1.setPIva("DEF456");
@@ -162,8 +148,7 @@ public class Runner implements CommandLineRunner {
 		cliente1.setSedeLegale(indirizzoRepository.getById(4l));
 		cliente1.setSedeOperativa(indirizzoRepository.getById(3l));
 		cliente1.setTipoCliente(TipoCliente.PA);
-		
-		
+
 		Cliente cliente2 = new Cliente();
 		cliente2.setRagioneSociale("PachiKiteSurfing");
 		cliente2.setPIva("GHI789");
@@ -180,8 +165,7 @@ public class Runner implements CommandLineRunner {
 		cliente2.setSedeLegale(indirizzoRepository.getById(6l));
 		cliente2.setSedeOperativa(indirizzoRepository.getById(5l));
 		cliente2.setTipoCliente(TipoCliente.SPA);
-		
-		
+
 		Cliente cliente3 = new Cliente();
 		cliente3.setRagioneSociale("ScassaioliSAS");
 		cliente3.setPIva("LMN101");
@@ -198,39 +182,29 @@ public class Runner implements CommandLineRunner {
 		cliente3.setSedeLegale(indirizzoRepository.getById(7l));
 		cliente3.setSedeOperativa(indirizzoRepository.getById(8l));
 		cliente3.setTipoCliente(TipoCliente.SAS);
-		
-		
-		
+
 		clienteRepository.save(cliente);
 		clienteRepository.save(cliente1);
 		clienteRepository.save(cliente2);
 		clienteRepository.save(cliente3);
-		
-		
+
 		StatoFattura s1 = new StatoFattura();
 		s1.setNome("pagata");
-		
-		
+
 		StatoFattura s2 = new StatoFattura();
 		s2.setNome("transazione in corso");
-	
-		
+
 		StatoFattura s3 = new StatoFattura();
 		s3.setNome("non pagata");
-	
-		
+
 		StatoFattura s4 = new StatoFattura();
 		s4.setNome("inviata al cliente");
-		
-		
+
 		statoFatturaRepository.save(s1);
 		statoFatturaRepository.save(s2);
 		statoFatturaRepository.save(s3);
 		statoFatturaRepository.save(s4);
-		
-	
-	
-		
+
 		Fattura f = new Fattura();
 		f.setNumeroFattura(40);
 		f.setAnno(2021);
@@ -238,8 +212,7 @@ public class Runner implements CommandLineRunner {
 		f.setImporto(new BigDecimal(100));
 		f.setStatoFattura(s1);
 		f.setCliente(cliente3);
-		
-		
+
 		Fattura f1 = new Fattura();
 		f1.setNumeroFattura(51);
 		f1.setAnno(2022);
@@ -247,8 +220,7 @@ public class Runner implements CommandLineRunner {
 		f1.setImporto(new BigDecimal(150));
 		f1.setStatoFattura(s1);
 		f1.setCliente(cliente2);
-		
-		
+
 		Fattura f2 = new Fattura();
 		f2.setNumeroFattura(78);
 		f2.setAnno(2021);
@@ -256,8 +228,7 @@ public class Runner implements CommandLineRunner {
 		f2.setImporto(new BigDecimal(300));
 		f2.setStatoFattura(s2);
 		f2.setCliente(cliente3);
-		
-		
+
 		Fattura f3 = new Fattura();
 		f3.setNumeroFattura(74);
 		f3.setAnno(2022);
@@ -266,7 +237,7 @@ public class Runner implements CommandLineRunner {
 		f3.setStatoFattura(s1);
 		f3.setCliente(cliente2);
 		fatturaRepository.save(f3);
-		
+
 		Fattura f4 = new Fattura();
 		f4.setNumeroFattura(11);
 		f4.setAnno(2022);
@@ -275,7 +246,7 @@ public class Runner implements CommandLineRunner {
 		f4.setStatoFattura(s2);
 		f4.setCliente(cliente1);
 		fatturaRepository.save(f4);
-		
+
 		Fattura f5 = new Fattura();
 		f5.setNumeroFattura(13);
 		f5.setAnno(2022);
@@ -284,7 +255,7 @@ public class Runner implements CommandLineRunner {
 		f5.setStatoFattura(s4);
 		f5.setCliente(cliente);
 		fatturaRepository.save(f5);
-		
+
 		Fattura f6 = new Fattura();
 		f6.setNumeroFattura(15);
 		f6.setAnno(2022);
@@ -293,7 +264,7 @@ public class Runner implements CommandLineRunner {
 		f6.setStatoFattura(s1);
 		f6.setCliente(cliente1);
 		fatturaRepository.save(f6);
-		
+
 		Fattura f7 = new Fattura();
 		f7.setNumeroFattura(79);
 		f7.setAnno(2021);
@@ -302,9 +273,7 @@ public class Runner implements CommandLineRunner {
 		f7.setStatoFattura(s3);
 		f7.setCliente(cliente);
 		fatturaRepository.save(f7);
-		
-		
-		
+
 		fatturaRepository.save(f);
 		fatturaRepository.save(f1);
 		fatturaRepository.save(f2);
@@ -313,12 +282,6 @@ public class Runner implements CommandLineRunner {
 		fatturaRepository.save(f5);
 		fatturaRepository.save(f6);
 		fatturaRepository.save(f7);
-		
-		
-
-		
-		
-		
 	}
 
 	private void initComune() throws Exception {
@@ -333,7 +296,8 @@ public class Runner implements CommandLineRunner {
 				p = provinciaRepository.findByCodProvincia(Long.valueOf(valore[0]));
 				if (p.isPresent()) {
 					comuneRepository.save(new Comune(rimpiazza(valore[2]), p.get()));
-				} else {
+				} 
+				else {
 
 					provincia = new Provincia();
 					provincia.setCodProvincia(Long.valueOf(valore[0]));
@@ -363,7 +327,8 @@ public class Runner implements CommandLineRunner {
 					provincia.setSigla(valore[0]);
 					provincia.setRegione(valore[2]);
 					provinciaRepository.save(provincia);
-				} else {
+				} 
+				else {
 
 					provinciaRepository.save(new Provincia(valore[0], valore[1], valore[2]));
 				}
@@ -373,7 +338,6 @@ public class Runner implements CommandLineRunner {
 
 	private String rimpiazza(String nome) {
 		return nome.replace('-', ' ');
-
 	}
 
 }

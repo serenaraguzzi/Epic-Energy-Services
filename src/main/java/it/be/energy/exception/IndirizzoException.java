@@ -6,4 +6,5 @@ public class IndirizzoException extends Exception {
 	public IndirizzoException(String message) {
 		super(message);
 	}
+	
 }

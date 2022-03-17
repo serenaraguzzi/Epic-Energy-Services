@@ -2,12 +2,10 @@ package it.be.energy.util;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-
 import it.be.energy.model.Role;
 import it.be.energy.model.Roles;
 import it.be.energy.model.User;

@@ -3,19 +3,15 @@ package it.be.energy.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,6 +25,7 @@ public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String ragioneSociale;
 	private String pIva;
 	private String email;
@@ -41,27 +38,19 @@ public class Cliente {
 	private String nomeContatto;
 	private String cognomeContatto;
 	private String numeroContatto;
+	
 	@OneToOne
+	@JsonIgnoreProperties({ "provincia", "indirizzi" })
 	private Indirizzo sedeLegale;
+	
 	@OneToOne
-	
+	@JsonIgnoreProperties({ "provincia", "indirizzi" })
 	private Indirizzo sedeOperativa;
+	
 	private TipoCliente tipoCliente;
-	
-	
-	@OneToMany(mappedBy = "cliente", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	
-	
+
+	@OneToMany(mappedBy = "cliente")
 	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 	List<Fattura> fatture;
-	
-		
-	}
-	
-	
-	
-	
-		
-	
 
-
+}

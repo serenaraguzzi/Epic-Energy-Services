@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import io.swagger.v3.oas.annotations.Operation;
 import it.be.energy.exception.UserException;
 import it.be.energy.model.LoginRequest;
@@ -32,7 +30,6 @@ import it.be.energy.repository.UserRepository;
 import it.be.energy.service.UserDetailsImpl;
 import it.be.energy.util.JwtUtils;
 
-
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -42,7 +39,7 @@ public class AuthController {
 
 	@Autowired
 	PasswordEncoder encoder;
-
+	
 	@Autowired
 	RoleRepository roleRepository;
 
@@ -73,8 +70,7 @@ public class AuthController {
 	public ResponseEntity<?> registraUser(@RequestBody RequestRegisterUser registraUser) throws UserException {
 		if (userRepository.existsByEmail(registraUser.getEmail())) {
 			return new ResponseEntity<String>("email già in uso!", HttpStatus.BAD_REQUEST);
-		} 
-		else if (userRepository.existsByUserName(registraUser.getUserName())) {
+		} else if (userRepository.existsByUserName(registraUser.getUserName())) {
 			return new ResponseEntity<String>("username già in uso!", HttpStatus.BAD_REQUEST);
 		}
 		User userRegistrato = new User();
@@ -88,8 +84,7 @@ public class AuthController {
 			Set<Role> ruoli = new HashSet<>();
 			ruoli.add(ruolo.get());
 			userRegistrato.setRoles(ruoli);
-		} 
-		else {
+		} else {
 			Set<Role> ruoli = new HashSet<>();
 			for (String set : registraUser.getRoles()) {
 				switch (set.toUpperCase()) {

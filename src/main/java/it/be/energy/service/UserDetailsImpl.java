@@ -4,13 +4,10 @@ package it.be.energy.service;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import it.be.energy.model.User;
 import lombok.Data;
 
@@ -21,8 +18,10 @@ public class UserDetailsImpl implements UserDetails {
 	private Long id;
 	private String userName;
 	private String email;
+
 	@JsonIgnore
 	private String password;
+
 	private boolean isEnabled;
 	private boolean accountNonLocked;
 	private boolean accountNonExpired;
@@ -31,6 +30,7 @@ public class UserDetailsImpl implements UserDetails {
 
 	public UserDetailsImpl(Long id, String userName, String email, String password,
 			Collection<? extends GrantedAuthority> authorities) {
+		
 		this.id = id;
 		this.userName = userName;
 		this.email = email;

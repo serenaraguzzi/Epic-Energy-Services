@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import it.be.energy.model.User;
 import it.be.energy.repository.UserRepository;
 
