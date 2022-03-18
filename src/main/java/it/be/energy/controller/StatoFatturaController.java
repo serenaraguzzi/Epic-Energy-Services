@@ -83,7 +83,7 @@ public class StatoFatturaController {
 	}
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@Operation(summary = "Cancella uno stato fattura", description = "Inserire un ID di uno sttao fattura da cancellare")
+	@Operation(summary = "Cancella uno stato fattura", description = "Inserire un ID di uno stato fattura da cancellare")
 	@DeleteMapping("/cancellastatofattura/{id}")
 	public String deleteStatoFatturaById(@PathVariable Long id) {
 		log.info("*** INIZIO CANCELLAZIONE STATO FATTURA ***");

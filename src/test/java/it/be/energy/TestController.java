@@ -35,7 +35,29 @@ public class TestController {
 
 	@Test
 	@WithMockUser
-	public void loginNoBody() throws Exception {
+	final void testSignUp() throws Exception {
+		String body = "{\r\n" + "  \"userName\": \"string\",\r\n" + "  \"password\": \"string\",\r\n"
+				+ "  \"nome\": \"string\",\r\n" + "  \"cognome\": \"string\",\r\n" + "  \"email\": \"string\",\r\n"
+				+ "  \"roles\": [\r\n" + "  \"USER\"\r\n" + "  ]\r\n" + "}";
+
+		MvcResult result = mockMvc
+				.perform(MockMvcRequestBuilders.post("http://localhost:8080/auth/signup")
+						.contentType(MediaType.APPLICATION_JSON).content(body))
+				.andExpect(status().isCreated()).andReturn();
+	}
+
+	@Test
+	@WithMockUser
+	final void testLogin() throws Exception {
+		String body = "{\r\n" + "  \"userName\": \"user\",\r\n" + "  \"password\": \"user\"\r\n" + "}";
+
+		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("http://localhost:8080/auth/login")
+				.contentType(MediaType.APPLICATION_JSON).content(body)).andExpect(status().isOk()).andReturn();
+	}
+
+	@Test
+	@WithMockUser
+	final void loginNoBody() throws Exception {
 		this.mockMvc.perform(post("http://localhost:8080/auth/login")).andExpect(status().isBadRequest());
 	}
 
@@ -47,42 +69,42 @@ public class TestController {
 
 	@Test
 	@WithAnonymousUser
-	public void testTrovaTuttiClientiWhenUtenteIsAnonymous() throws Exception {
+	final void testTrovaTuttiClientiWhenUtenteIsAnonymous() throws Exception {
 		this.mockMvc.perform(get("http://localhost:8080/cliente/trovatutti")).andDo(print())
 				.andExpect(status().isUnauthorized());
 	}
 
 	@Test
 	@WithAnonymousUser
-	public void testTrovaTuttiComuniWhenUtenteIsAnonymous() throws Exception {
+	final void testTrovaTuttiComuniWhenUtenteIsAnonymous() throws Exception {
 		this.mockMvc.perform(get("http://localhost:8080/comune/trovatutti")).andDo(print())
 				.andExpect(status().isUnauthorized());
 	}
 
 	@Test
 	@WithAnonymousUser
-	public void testTrovaTutteFattureWhenUtenteIsAnonymous() throws Exception {
+	final void testTrovaTutteFattureWhenUtenteIsAnonymous() throws Exception {
 		this.mockMvc.perform(get("http://localhost:8080/fattura/trovatutte")).andDo(print())
 				.andExpect(status().isUnauthorized());
 	}
 
 	@Test
 	@WithAnonymousUser
-	public void testTrovaTuttiIndirizziWhenUtenteIsAnonymous() throws Exception {
+	final void testTrovaTuttiIndirizziWhenUtenteIsAnonymous() throws Exception {
 		this.mockMvc.perform(get("http://localhost:8080/indirizzo/trovatutti")).andDo(print())
 				.andExpect(status().isUnauthorized());
 	}
 
 	@Test
 	@WithAnonymousUser
-	public void testTrovaTutteProvinceWhenUtenteIsAnonymous() throws Exception {
+	final void testTrovaTutteProvinceWhenUtenteIsAnonymous() throws Exception {
 		this.mockMvc.perform(get("http://localhost:8080/provincia/trovatutte")).andDo(print())
 				.andExpect(status().isUnauthorized());
 	}
 
 	@Test
 	@WithAnonymousUser
-	public void testTrovaTuttiStatiFatturaWhenUtenteIsAnonymous() throws Exception {
+	final void testTrovaTuttiStatiFatturaWhenUtenteIsAnonymous() throws Exception {
 		this.mockMvc.perform(get("http://localhost:8080/statofattura/trovatutti")).andDo(print())
 				.andExpect(status().isUnauthorized());
 	}
@@ -164,26 +186,25 @@ public class TestController {
 
 	@Test
 	@WithMockUser(username = "admin", password = "admin", roles = "ADMIN")
-	final void testPost() throws Exception {
-		String body = "{\r\n" + "  \"tipoCliente\": \"SAS\",\r\n" + "  \"ragioneSociale\": \"PagnozziCompany\",\r\n"
-				+ "  \"pIva\": \"159753a\",\r\n" + "  \"email\": \"anto@gmail.com\",\r\n"
-				+ "  \"dataInserimento\": \"2020-02-12\",\r\n" + "  \"dataUltimoContatto\": \"2022-02-20\",\r\n"
-				+ "  \"fatturatoAnnuale\": 1100000,\r\n" + "  \"pec\": \"amnendar@pec.it\",\r\n"
-				+ "  \"telefono\": \"12345\",\r\n" + "  \"nomeContatto\": \"Antonello\",\r\n"
-				+ "  \"cognomeContatto\": \"Pagnozzi\",\r\n" + "  \"numeroContatto\": \"3462100963\",\r\n"
-				+ "  \"emailContatto\": \"Amnendar@gmail.com\",\r\n" + "  \"sedeLegale\": {\r\n" + "    \"id\": 1\r\n"
-				+ "    },\r\n" + "  \"sedeOperativa\": {\r\n" + "    \"id\": 2\r\n" + "  },\r\n"
-				+ "  \"fatture\": [\r\n" + "    {\r\n" + "      \"anno\": 2021,\r\n"
-				+ "      \"data\": \"2021-12-12\",\r\n" + "      \"importo\": 188,\r\n" + "      \"numero\": 74,\r\n"
-				+ "      \"stato\": \"pagata\"\r\n" + "    }\r\n" + "  ]\r\n" + "}";
+	final void testPostCliente() throws Exception {
+		String body = "{\r\n" + "  \"tipo\": \"TO\",\r\n" + "  \"ragioneSociale\": \"pippo\",\r\n"
+				+ "  \"partitaIva\": \"string\",\r\n" + "  \"email\": \"pippo@gmail.com\",\r\n"
+				+ "  \"dataInserimento\": \"2020-02-12\",\r\n" + "  \"dataUltimoContatto\": \"2020-04-15\",\r\n"
+				+ "  \"pec\": \"string@pec.it\",\r\n" + "  \"telefono\": \"12345\",\r\n"
+				+ "  \"nomeContatto\": \"pippo\",\r\n" + "  \"cognomeContatto\": \"pippo\",\r\n"
+				+ "  \"telefonoContatto\": \"12345\",\r\n" + "  \"indirizzoSedeLegale\": {\r\n" + "    \"id\": 1\r\n"
+				+ "    },\r\n" + "  \"indirizzoSedeOperativa\": {\r\n" + "    \"id\": 1\r\n" + "  },\r\n"
+				+ "  \"fatture\": [\r\n" + "    {\r\n" + "      \"anno\": 2020,\r\n"
+				+ "      \"data\": \"2020-02-12\",\r\n" + "      \"importo\": 10000,\r\n" + "      \"numero\": 6,\r\n"
+				+ "      \"stato\": \"pagato\"\r\n" + "    }\r\n" + "  ]\r\n" + "}";
 
-		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/cliente/inseriscicliente")
+		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("http://localhost:8080/cliente/inseriscicliente")
 				.contentType(MediaType.APPLICATION_JSON).content(body)).andExpect(status().isOk()).andReturn();
 	}
 
 	@Test
 	@WithMockUser(username = "admin", password = "admin", roles = "ADMIN")
-	final void testPut() throws Exception {
+	final void testPutCliente() throws Exception {
 		String body = "{\r\n" + "  \"tipoCliente\": \"PA\",\r\n" + "  \"ragioneSociale\": \"Anaclerio&Co\",\r\n"
 				+ "  \"pIva\": \"string\",\r\n" + "  \"email\": \"rick@gmail.com\",\r\n"
 				+ "  \"dataInserimento\": \"2022-03-15\",\r\n" + "  \"dataUltimoContatto\": \"2022-03-15\",\r\n"
@@ -196,7 +217,7 @@ public class TestController {
 				+ "      \"data\": \"2021-01-28\",\r\n" + "      \"importo\": 155,\r\n" + "      \"numero\": 159,\r\n"
 				+ "      \"stato\": \"pagata\"\r\n" + "    }\r\n" + "  ]\r\n" + "}";
 
-		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.put("/cliente/aggiornacliente/2")
+		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.put("http://localhost:8080/cliente/aggiornacliente/2")
 				.contentType(MediaType.APPLICATION_JSON).content(body)).andExpect(status().isOk()).andReturn();
 	}
 
@@ -230,30 +251,58 @@ public class TestController {
 
 	@Test
 	@WithMockUser(username = "user", password = "user", roles = "USER")
-	public void testDeleteClienteWhenUserIsAuthenticated() throws Exception {
+	final void testDeleteClienteWhenUserIsAuthenticated() throws Exception {
 		this.mockMvc.perform(delete("http://localhost:8080/cliente/cancellacliente/2")).andDo(print())
 				.andExpect(status().isForbidden());
 	}
 
 	@Test
 	@WithMockUser(username = "user", password = "user", roles = "USER")
-	public void testDeleteFatturaWhenUserIsAuthenticated() throws Exception {
+	final void testDeleteFatturaWhenUserIsAuthenticated() throws Exception {
 		this.mockMvc.perform(delete("http://localhost:8080/fattura/cancellafattura/2")).andDo(print())
 				.andExpect(status().isForbidden());
 	}
 
 	@Test
 	@WithMockUser(username = "user", password = "user", roles = "USER")
-	public void testDeleteIndirizzoWhenUserIsAuthenticated() throws Exception {
+	final void testDeleteIndirizzoWhenUserIsAuthenticated() throws Exception {
 		this.mockMvc.perform(delete("http://localhost:8080/indirizzo/cancellaindirizzo/2")).andDo(print())
 				.andExpect(status().isForbidden());
 	}
 
 	@Test
 	@WithMockUser(username = "user", password = "user", roles = "USER")
-	public void testDeleteStatoFatturaWhenUserIsAuthenticated() throws Exception {
+	final void testDeleteStatoFatturaWhenUserIsAuthenticated() throws Exception {
 		this.mockMvc.perform(delete("http://localhost:8080/statofattura/cancellastatofattura/2")).andDo(print())
 				.andExpect(status().isForbidden());
+	}
+
+	@Test
+	@WithAnonymousUser
+	final void testDeleteClienteWhenUtenteIsAnonymous() throws Exception {
+		this.mockMvc.perform(delete("http://localhost:8080/cliente/cancellacliente/2")).andDo(print())
+				.andExpect(status().isUnauthorized());
+	}
+
+	@Test
+	@WithAnonymousUser
+	final void testDeleteFatturaWhenUtenteIsAnonymous() throws Exception {
+		this.mockMvc.perform(delete("http://localhost:8080/fattura/cancellafattura/1")).andDo(print())
+				.andExpect(status().isUnauthorized());
+	}
+
+	@Test
+	@WithAnonymousUser
+	final void testDeleteIndirizzoWhenUtenteIsAnonymous() throws Exception {
+		this.mockMvc.perform(delete("http://localhost:8080/indirizzo/cancellaindirizzo/2")).andDo(print())
+				.andExpect(status().isUnauthorized());
+	}
+
+	@Test
+	@WithAnonymousUser
+	final void testDeleteStatoFatturaWhenUtenteIsAnonymous() throws Exception {
+		this.mockMvc.perform(delete("http://localhost:8080/statofattura/cancellastatofattura/3")).andDo(print())
+				.andExpect(status().isUnauthorized());
 	}
 
 	@Test
