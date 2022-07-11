@@ -2584,4 +2584,189 @@
 ""2022-03-18 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 ""2022-03-18 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
 ""2022-03-18 [http-nio-8080-exec-9] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 975 ms
+""2022-03-18 [http-nio-8080-exec-5] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('"' (code 34)): was expecting comma to separate Object entries; nested exception is com.fasterxml.jackson.databind.JsonMappingException: Unexpected character ('"' (code 34)): was expecting comma to separate Object entries<EOL> at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 17, column: 6] (through reference chain: it.be.energy.model.Cliente["sedeLegale"])]
+""2022-03-18 [http-nio-8080-exec-7] INFO  i.b.e.controller.ClienteController - *** INIZIO INSERIMENTO CLIENTE ***
+""2022-03-18 [http-nio-8080-exec-7] INFO  i.b.e.controller.ClienteController - *** FINE INSERIMENTO CLIENTE ***
+""2022-03-18 [http-nio-8080-exec-1] INFO  i.b.e.controller.ClienteController - *** INIZIO INSERIMENTO CLIENTE ***
+""2022-03-18 [http-nio-8080-exec-1] INFO  i.b.e.controller.ClienteController - *** FINE INSERIMENTO CLIENTE ***
+""2022-03-18 [http-nio-8080-exec-3] INFO  i.b.e.controller.FatturaController - *** INIZIO INSERIMENTO FATTURA ***
+""2022-03-18 [http-nio-8080-exec-3] INFO  i.b.e.controller.FatturaController - *** FINE INSERIMENTO FATTURA ***
+""2022-03-18 [RMI TCP Connection(175)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+""2022-03-18 [RMI TCP Connection(175)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2022-03-18 [RMI TCP Connection(175)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+""2022-03-18 [RMI TCP Connection(175)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+""2022-03-18 [main] INFO  it.be.energy.TestController - Starting TestController using Java 11.0.13 on LAPTOP-JH0A2T95 with PID 10036 (started by jerez in C:\java\eclipse-jee-2021-12-R-win32-x86_64\eclipse\Progetti\EpicEnergyServices)
+""2022-03-18 [main] INFO  it.be.energy.TestController - No active profile set, falling back to 1 default profile: "default"
+""2022-03-18 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2022-03-18 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 145 ms. Found 8 JPA repository interfaces.
+""2022-03-18 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2022-03-18 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.5.Final
+""2022-03-18 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2022-03-18 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+""2022-03-18 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+""2022-03-18 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+""2022-03-18 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2022-03-18 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2022-03-18 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2022-03-18 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will not secure any request
+""2022-03-18 [main] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+""2022-03-18 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+""2022-03-18 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+""2022-03-18 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 2 ms
+""2022-03-18 [main] INFO  it.be.energy.TestController - Started TestController in 14.093 seconds (JVM running for 16.6)
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** ORDINAMENTO IN CORSO ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE ORDINAMENTO ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** INIZIO RICERCA CLIENTI ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE RICERCA CLIENTI ***
+""2022-03-18 [main] INFO  i.b.e.c.StatoFatturaController - *** INIZIO RICERCA STATO FATTURA ***
+""2022-03-18 [main] INFO  i.b.e.c.StatoFatturaController - *** FINE RICERCA STATO FATTURA ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** INIZIO CANCELLAZIONE CLIENTE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE CANCELLAZIONE CLIENTE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ProvinciaController - *** INIZIO RICERCA PROVINCE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ProvinciaController - *** FINE RICERCA PROVINCE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ComuneController - *** INIZIO RICERCA COMUNI ***
+""2022-03-18 [main] INFO  i.b.e.controller.ComuneController - *** FINE RICERCA COMUNI ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** ORDINAMENTO IN CORSO ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE ORDINAMENTO ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** INIZIO RICERCA CLIENTI ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE RICERCA CLIENTI ***
+""2022-03-18 [main] INFO  i.b.e.controller.IndirizzoController - *** INIZIO RICERCA INDIRIZZO ***
+""2022-03-18 [main] INFO  i.b.e.controller.IndirizzoController - *** FINE RICERCA INDIRIZZO ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** INIZIO RICERCA FATTURE ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** FINE RICERCA FATTURE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** INIZIO RICERCA CLIENTI ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE RICERCA CLIENTI ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** INIZIO RICERCA FATTURE ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** FINE RICERCA FATTURE ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** INIZIO RICERCA FATTURE ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** FINE RICERCA FATTURE ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** INIZIO RICERCA FATTURE ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** FINE RICERCA FATTURE ***
+""2022-03-18 [main] INFO  i.b.e.controller.IndirizzoController - *** INIZIO RICERCA INDIRIZZI ***
+""2022-03-18 [main] INFO  i.b.e.controller.IndirizzoController - *** FINE RICERCA INDIRIZZI ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** ORDINAMENTO IN CORSO ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE ORDINAMENTO ***
+""2022-03-18 [main] INFO  i.b.e.controller.IndirizzoController - *** INIZIO CANCELLAZIONE INDIRIZZO ***
+""2022-03-18 [main] INFO  i.b.e.controller.IndirizzoController - *** FINE CANCELLAZIONE INDIRIZZO ***
+""2022-03-18 [main] INFO  i.b.e.controller.ComuneController - *** INIZIO RICERCA COMUNE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ComuneController - *** FINE RICERCA COMUNE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** INIZIO RICERCA CLIENTE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE RICERCA CLIENTE ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** INIZIO RICERCA FATTURE ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** FINE RICERCA FATTURE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** INIZIO AGGIORNAMENTO CLIENTE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE AGGIORNAMENTO CLIENTE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** ORDINAMENTO IN CORSO ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE ORDINAMENTO ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** INIZIO CANCELLAZIONE FATTURA ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** FINE CANCELLAZIONE FATTURA ***
+""2022-03-18 [main] INFO  i.b.e.controller.ProvinciaController - *** INIZIO RICERCA PROVINCIA ***
+""2022-03-18 [main] INFO  i.b.e.controller.ProvinciaController - *** FINE RICERCA PROVINCIA ***
+""2022-03-18 [main] INFO  i.b.e.c.StatoFatturaController - *** INIZIO CANCELLAZIONE STATO FATTURA ***
+""2022-03-18 [main] INFO  i.b.e.c.StatoFatturaController - *** FINE CANCELLAZIONE STATO FATTURA ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** INIZIO INSERIMENTO CLIENTE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE INSERIMENTO CLIENTE ***
+""2022-03-18 [main] INFO  i.b.e.c.StatoFatturaController - *** INIZIO RICERCA STATI FATTURA ***
+""2022-03-18 [main] INFO  i.b.e.c.StatoFatturaController - *** FINE RICERCA STATI FATTURA ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** INIZIO RICERCA FATTURA ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** FINE RICERCA FATTURA ***
+""2022-03-18 [main] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity<?> it.be.energy.controller.AuthController.authenticateUser(it.be.energy.model.LoginRequest)]
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** ORDINAMENTO IN CORSO ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE ORDINAMENTO ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** INIZIO RICERCA CLIENTI ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE RICERCA CLIENTI ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** INIZIO RICERCA CLIENTI ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE RICERCA CLIENTI ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** INIZIO RICERCA FATTURE ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** FINE RICERCA FATTURE ***
+""2022-03-18 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2022-03-18 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+""2022-03-18 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+""2022-03-18 [main] INFO  it.be.energy.TestController - Starting TestController using Java 11.0.13 on LAPTOP-JH0A2T95 with PID 8876 (started by jerez in C:\java\eclipse-jee-2021-12-R-win32-x86_64\eclipse\Progetti\EpicEnergyServices)
+""2022-03-18 [main] INFO  it.be.energy.TestController - No active profile set, falling back to 1 default profile: "default"
+""2022-03-18 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2022-03-18 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 198 ms. Found 8 JPA repository interfaces.
+""2022-03-18 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2022-03-18 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.5.Final
+""2022-03-18 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2022-03-18 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+""2022-03-18 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+""2022-03-18 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+""2022-03-18 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2022-03-18 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2022-03-18 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2022-03-18 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will not secure any request
+""2022-03-18 [main] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+""2022-03-18 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+""2022-03-18 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+""2022-03-18 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 3 ms
+""2022-03-18 [main] INFO  it.be.energy.TestController - Started TestController in 17.103 seconds (JVM running for 21.195)
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** ORDINAMENTO IN CORSO ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE ORDINAMENTO ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** INIZIO RICERCA CLIENTI ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE RICERCA CLIENTI ***
+""2022-03-18 [main] INFO  i.b.e.c.StatoFatturaController - *** INIZIO RICERCA STATO FATTURA ***
+""2022-03-18 [main] INFO  i.b.e.c.StatoFatturaController - *** FINE RICERCA STATO FATTURA ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** INIZIO CANCELLAZIONE CLIENTE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE CANCELLAZIONE CLIENTE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ProvinciaController - *** INIZIO RICERCA PROVINCE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ProvinciaController - *** FINE RICERCA PROVINCE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ComuneController - *** INIZIO RICERCA COMUNI ***
+""2022-03-18 [main] INFO  i.b.e.controller.ComuneController - *** FINE RICERCA COMUNI ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** ORDINAMENTO IN CORSO ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE ORDINAMENTO ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** INIZIO RICERCA CLIENTI ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE RICERCA CLIENTI ***
+""2022-03-18 [main] INFO  i.b.e.controller.IndirizzoController - *** INIZIO RICERCA INDIRIZZO ***
+""2022-03-18 [main] INFO  i.b.e.controller.IndirizzoController - *** FINE RICERCA INDIRIZZO ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** INIZIO RICERCA FATTURE ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** FINE RICERCA FATTURE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** INIZIO RICERCA CLIENTI ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE RICERCA CLIENTI ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** INIZIO RICERCA FATTURE ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** FINE RICERCA FATTURE ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** INIZIO RICERCA FATTURE ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** FINE RICERCA FATTURE ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** INIZIO RICERCA FATTURE ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** FINE RICERCA FATTURE ***
+""2022-03-18 [main] INFO  i.b.e.controller.IndirizzoController - *** INIZIO RICERCA INDIRIZZI ***
+""2022-03-18 [main] INFO  i.b.e.controller.IndirizzoController - *** FINE RICERCA INDIRIZZI ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** ORDINAMENTO IN CORSO ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE ORDINAMENTO ***
+""2022-03-18 [main] INFO  i.b.e.controller.IndirizzoController - *** INIZIO CANCELLAZIONE INDIRIZZO ***
+""2022-03-18 [main] INFO  i.b.e.controller.IndirizzoController - *** FINE CANCELLAZIONE INDIRIZZO ***
+""2022-03-18 [main] INFO  i.b.e.controller.ComuneController - *** INIZIO RICERCA COMUNE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ComuneController - *** FINE RICERCA COMUNE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** INIZIO RICERCA CLIENTE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE RICERCA CLIENTE ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** INIZIO RICERCA FATTURE ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** FINE RICERCA FATTURE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** INIZIO AGGIORNAMENTO CLIENTE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE AGGIORNAMENTO CLIENTE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** ORDINAMENTO IN CORSO ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE ORDINAMENTO ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** INIZIO CANCELLAZIONE FATTURA ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** FINE CANCELLAZIONE FATTURA ***
+""2022-03-18 [main] INFO  i.b.e.controller.ProvinciaController - *** INIZIO RICERCA PROVINCIA ***
+""2022-03-18 [main] INFO  i.b.e.controller.ProvinciaController - *** FINE RICERCA PROVINCIA ***
+""2022-03-18 [main] INFO  i.b.e.c.StatoFatturaController - *** INIZIO CANCELLAZIONE STATO FATTURA ***
+""2022-03-18 [main] INFO  i.b.e.c.StatoFatturaController - *** FINE CANCELLAZIONE STATO FATTURA ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** INIZIO INSERIMENTO CLIENTE ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE INSERIMENTO CLIENTE ***
+""2022-03-18 [main] INFO  i.b.e.c.StatoFatturaController - *** INIZIO RICERCA STATI FATTURA ***
+""2022-03-18 [main] INFO  i.b.e.c.StatoFatturaController - *** FINE RICERCA STATI FATTURA ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** INIZIO RICERCA FATTURA ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** FINE RICERCA FATTURA ***
+""2022-03-18 [main] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity<?> it.be.energy.controller.AuthController.authenticateUser(it.be.energy.model.LoginRequest)]
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** ORDINAMENTO IN CORSO ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE ORDINAMENTO ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** INIZIO RICERCA CLIENTI ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE RICERCA CLIENTI ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** INIZIO RICERCA CLIENTI ***
+""2022-03-18 [main] INFO  i.b.e.controller.ClienteController - *** FINE RICERCA CLIENTI ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** INIZIO RICERCA FATTURE ***
+""2022-03-18 [main] INFO  i.b.e.controller.FatturaController - *** FINE RICERCA FATTURE ***
+""2022-03-18 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2022-03-18 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+""2022-03-18 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
 "

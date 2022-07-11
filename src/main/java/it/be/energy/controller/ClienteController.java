@@ -70,7 +70,7 @@ public class ClienteController {
 	public String addCliente(@RequestBody Cliente cliente) {
 		log.info("*** INIZIO INSERIMENTO CLIENTE ***");
 		clienteService.addCliente(cliente);
-		log.info("*** FINE INSERIMENTO CLIENTE ***");
+		log.info("*** FINE INSERIMENTO CLIENTE ***");		
 		return "Cliente salvato!";
 	}
 
