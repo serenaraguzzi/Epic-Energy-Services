@@ -2,11 +2,11 @@
 
 ## Introduzione
 Questo progetto consiste in un'applicazione di solo lato Back-End per la gestione di un sistema di clienti (CRM) per un'azienda di fornitura energetica, collegata ad un DataBase SQL.
-E' stato aggiunto un sistema di autenticazione basato su token JWT. Si deve essere autenticati per accedere ai metodi. NOTA. Il sistema già presenta alcune entità nel database per eventuali test, oltre che a 2 utenti di default (user e admin).
+E' stato aggiunto un sistema di autenticazione basato su token JWT. Si deve essere autenticati per accedere ai metodi. NOTA. Il sistema presenta 2 utenti di default (user e admin).
 ## Tecnologie
 Il progetto è stato creato usando:
 •	Java + Spring Boot
-•	PostegreSQL
+•	PostgreSQL
 •	Spring Security + Token JWT
 •	JUnit
 •	Maven
