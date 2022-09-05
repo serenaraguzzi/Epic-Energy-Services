@@ -21,6 +21,7 @@ Il progetto è stato creato usando:
 # Sicurezza
 Come già accennato, per accedere al sistema gli utenti/user devono essere autenticati(è possibile effettuare una registrazione utente):
 MODEL UTENTE PARAMETRIZZATO
+```
 {
   "userName": "Lorece",
   "password": "provapassword",
@@ -31,6 +32,8 @@ MODEL UTENTE PARAMETRIZZATO
     "USER"
   ]
 }
+```
+
 Anche gli utenti/user vengono salvati sul database, le password vengono criptate usando BCrypt Password Encoder.
 Gli utenti sono divisi in Admin e User. Gli utenti con ruolo User possono soltanto accedere ai metodi di visualizzazione, i metodi di modifica/aggiorna/cancella sono disponibili soltanto per gli admin. Un utente può avere entrambi i ruoli contemporanemente.
 # Spiegazione
