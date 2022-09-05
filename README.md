@@ -1,11 +1,5 @@
 ## BE-Epicode-ProgettoFinale
-Contenuti
-•	Introduzione
-•	Tecnologie
-•	Sicurezza
-•	Spiegazione
-•	Link Utili
-•	Testing
+
 # Introduzione
 Questo progetto consiste in un'applicazione (a scopo di esempio, comprensiva solo di lato Back-End) per la gestione di un sistema di clienti (CRM) per un'azienda di fornitura energetica, collegata ad un DataBase SQL.
 Abbiamo anche aggiunto un sistema di autenticazione basato su token JWT. Bisogna essere autenticati per accedere ai metodi. NOTA. Il sistema già presenta alcune entità nel database per eventuali test, oltre che a 2 utenti di default (user e admin).
@@ -21,7 +15,7 @@ Il progetto è stato creato usando:
 # Sicurezza
 Come già accennato, per accedere al sistema gli utenti/user devono essere autenticati(è possibile effettuare una registrazione utente):
 MODEL UTENTE PARAMETRIZZATO
-```
+``` java
 {
   "userName": "Lorece",
   "password": "provapassword",
