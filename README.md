@@ -1,9 +1,9 @@
-## BE-Epicode-ProgettoFinale
+# BE-Epicode-ProgettoFinale
 
-# Introduzione
+## Introduzione
 Questo progetto consiste in un'applicazione solo di lato Back-End per la gestione di un sistema di clienti (CRM) per un'azienda di fornitura energetica, collegata ad un DataBase SQL.
 E' stato aggiunto un sistema di autenticazione basato su token JWT. Si deve essere autenticati per accedere ai metodi. NOTA. Il sistema già presenta alcune entità nel database per eventuali test, oltre che a 2 utenti di default (user e admin).
-# Tecnologie
+## Tecnologie
 Il progetto è stato creato usando:
 •	Java + Spring Boot
 •	PostegreSQL
@@ -12,7 +12,7 @@ Il progetto è stato creato usando:
 •	Maven
 •	Git (GitHub)
 •	Comprensivo di Swagger e OpenApi per la documentazione
-# Sicurezza
+## Sicurezza
 Come già accennato, per accedere al sistema gli utenti/user devono essere autenticati(è possibile effettuare una registrazione utente):
 MODEL UTENTE PARAMETRIZZATO
 ``` java
@@ -30,7 +30,7 @@ MODEL UTENTE PARAMETRIZZATO
 
 Anche gli utenti/user vengono salvati sul database, le password vengono criptate usando BCrypt Password Encoder.
 Gli utenti sono divisi in Admin e User. Gli utenti con ruolo User possono soltanto accedere ai metodi di visualizzazione, i metodi di modifica/aggiorna/cancella sono disponibili soltanto per gli admin. Un utente può avere entrambi i ruoli contemporanemente.
-# Spiegazione
+## Spiegazione
 L'applicazione viene utilizzata per la gestione delle seguenti entità:
 •	Clienti
 •	Fatture
@@ -110,9 +110,9 @@ Rimangono gli indirizzi, come visto ogni cliente ne ha due (sede legale e sede o
 ```
 Il comune viene passato tramite l'ID corrispondente. In caso di dubbi, ci sono metodi get(per Id e per Nome) per cercarli.
 Comune e Provincie sono entità che vengono caricate direttamente da due file .CSV presenti. Sono comprensive di nome, sigle e collegate tra loro (ogni Provincia è collegata alla propria lista di Comuni, ogni Comune è collegato alla propria provincia).
-# Link
+## Link
 Link di accesso alla collezione Postman comprensiva di tutte le chiamate ai controller(Per poter effettuare tutte le chiamate e provare i metodi): https://www.getpostman.com/collections/449eb38720e1a4a216fd
 NOTA. La collezione è anche inclusa fisicamente nel progetto, assieme ad un backup per un db di prova(nella cartella src/main/resources/risorse)
 Esempio di link di accesso a Swagger(Per la documentazione): http://localhost:8080/swagger-ui/index.html#/
-# Test
+## Test
 Sono stati implementati un numero consistente di test effettuati con Junit e MockMvc, presenti nelle apposite classi nel package di test.
