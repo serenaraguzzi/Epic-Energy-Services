@@ -32,14 +32,14 @@ Anche gli utenti/user vengono salvati sul database, le password vengono criptate
 Gli utenti sono divisi in Admin e User. Gli utenti con ruolo User possono soltanto accedere ai metodi di visualizzazione, i metodi di modifica/aggiorna/cancella sono disponibili soltanto per gli admin. Un utente può avere entrambi i ruoli contemporanemente.
 ## Spiegazione
 L'applicazione viene utilizzata per la gestione delle seguenti entità:
-•	Clienti
-•	Fatture
-•	StatoFatture
-•	Indirizzi
-•	Comuni
-•	Province
-•	User(Autenticazione)
-Le entità vengono salvate sul database con un valore numerico(Long) come chiave primaria.
+*	Clienti
+*	Fatture
+*	StatoFatture
+*	Indirizzi
+*	Comuni
+*	Province
+*	User(Autenticazione)
+Le entità vengono salvate sul database con un valore numerico (Long) come chiave primaria.
 Abbiamo a disposizione tutte le funzionalità di CRUD per tutte le entità (eccetto Comuni e Province, che dispongono solo di metodi di visualizzazione in quanto vengono caricate da un file.CSV presente nel progetto), più la possibilità di visualizzare o cercare Clienti e Fatture tramite determinati parametri
 I clienti sono comprensivi di diversi dati:
 
@@ -99,7 +99,7 @@ ESEMPIO DI BODY JSON PER INSERIMENTO FATTURA
 }
   ```
 Come si può vedere, la fattura deve necessariamente essere collegata ad un cliente (tramite la chiave primaria di quest'ultimo) per poter essere creata.
-Lo Stato di una fattura è stato realizzato come un entità a sé stante, comprensiva solo di una stringa che indica il nome dello stato, l'id verrà generato automaticamente.
+Lo Stato di una fattura è stato realizzato come un'entità a sé stante, comprensiva solo di una stringa che indica il nome dello stato, l'id verrà generato automaticamente.
 
 ESEMPIO DI BODY JSON PER INSERIMENTO STATO FATTURA
 ``` java
