@@ -132,4 +132,4 @@ Link di accesso alla collezione Postman comprensiva di tutte le chiamate ai cont
 
 Esempio di link di accesso a Swagger (Per la documentazione): http://localhost:8080/swagger-ui.html
 ## Test
-Sono stati implementati un numero consistente di test effettuati con Junit e MockMvc, presenti nelle apposite classi nel package di test.
+Sono presenti alcuni test effettuati con Junit e MockMvc nelle apposite classi nel package di test.
