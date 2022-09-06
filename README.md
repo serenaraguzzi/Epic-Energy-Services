@@ -40,7 +40,7 @@ L'applicazione viene utilizzata per la gestione delle seguenti entità:
 *	Province
 *	User(Autenticazione)
 Le entità vengono salvate sul database con un valore numerico (Long) come chiave primaria.
-Abbiamo a disposizione tutte le funzionalità di CRUD per tutte le entità (eccetto Comuni e Province, che dispongono solo di metodi di visualizzazione in quanto vengono caricate da un file.CSV presente nel progetto), più la possibilità di visualizzare o cercare Clienti e Fatture tramite determinati parametri
+Abbiamo a disposizione tutte le funzionalità di CRUD per tutte le entità (eccetto Comuni e Province, che dispongono solo di metodi di visualizzazione in quanto vengono caricate da un file.CSV presente nel progetto), più la possibilità di visualizzare o cercare Clienti e Fatture tramite determinati parametri.
 I clienti sono comprensivi di diversi dati:
 
 ESEMPIO DI BODY JSON PER INSERIMENTO CLIENTE
