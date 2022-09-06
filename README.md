@@ -5,13 +5,13 @@ Questo progetto consiste in un'applicazione di solo lato Back-End per la gestion
 E' stato aggiunto un sistema di autenticazione basato su token JWT. Si deve essere autenticati per accedere ai metodi. NOTA. Il sistema presenta 2 utenti di default (user e admin).
 ## Tecnologie
 Il progetto è stato creato usando:
-*•	Java + Spring Boot
-*•	PostgreSQL
-*•	Spring Security + Token JWT
-*•	JUnit
-*•	Maven
-*•	Git (GitHub)
-*•	Comprensivo di Swagger e OpenApi per la documentazione
+*	Java + Spring Boot
+*	PostgreSQL
+*	Spring Security + Token JWT
+*	JUnit
+*	Maven
+*	Git (GitHub)
+*	Comprensivo di Swagger e OpenApi per la documentazione
 ## Sicurezza
 Come già accennato, per accedere al sistema gli utenti/user devono essere autenticati (è possibile effettuare una registrazione utente):
 MODEL UTENTE PARAMETRIZZATO
