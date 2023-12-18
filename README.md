@@ -129,7 +129,7 @@ ESEMPIO DI BODY JSON PER INSERIMENTO INDIRIZZO
 Il comune viene passato tramite l'ID corrispondente. In caso di dubbi, ci sono metodi get (per Id e per Nome) per cercarli.
 Comune e Provincie sono entità che vengono caricate direttamente da due file.CSV presenti. Sono comprensive di nome, sigle e collegate tra loro (ogni Provincia è collegata alla propria lista di Comuni, ogni Comune è collegato alla propria provincia).
 ## Link
-Link di accesso alla collezione Postman comprensiva di tutte le chiamate ai controller (Per poter effettuare tutte le chiamate e provare i metodi): [https://www.getpostman.com/collections/af786742033ca6a79f5b]
+Link di accesso alla collezione Postman comprensiva di tutte le chiamate ai controller (Per poter effettuare tutte le chiamate e provare i metodi): [https://www.postman.com/serenaraguzzi/workspace/sere/collection/19442049-a306b68f-8240-4b24-a6c0-4d10d886464c?action=share&creator=19442049]
 
 Esempio di link di accesso a Swagger (Per la documentazione): http://localhost:8080/swagger-ui.html
 ## Test
